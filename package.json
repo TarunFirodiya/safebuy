@@ -10,6 +10,7 @@
   "dependencies": {
     "@base-ui/react": "^1.4.0",
     "@heroicons/react": "^2.2.0",
+    "@remotion/cli": "^4.0.450",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.38.0",
@@ -18,6 +19,7 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-use-measure": "^2.1.7",
+    "remotion": "^4.0.450",
     "schema-dts": "^2.0.0",
     "shadcn": "^4.3.0",
     "tailwind-merge": "^3.5.0",

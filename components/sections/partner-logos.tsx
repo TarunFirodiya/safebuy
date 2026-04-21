@@ -4,22 +4,26 @@ const partners = [
   {
     name: "ICICI Bank",
     logo: "https://pathfinderstraining.com/wp-content/uploads/2022/10/ICICI-BANK-LOGO.png",
-    height: 24,
   },
   {
     name: "State Bank of India",
     logo: "https://icon2.cleanpng.com/lnd/20241224/fe/656de25930c6fdc0e12ba4162d0f25.webp",
-    height: 28,
   },
   {
     name: "HDFC Bank",
     logo: "https://1000logos.net/wp-content/uploads/2021/06/HDFC-Bank-logo.png",
-    height: 22,
   },
   {
     name: "Kaveri Online Services",
     logo: "https://housiey.com/blogs/wp-content/uploads/2025/03/Kaveri-Online-Service.png",
-    height: 26,
+  },
+  {
+    name: "Aadhaar (UIDAI)",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Aadhaar.svg",
+  },
+  {
+    name: "BBMP — Bruhat Bengaluru Mahanagara Palike",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/0/09/BBMP_2019.svg",
   },
 ];
 
@@ -30,25 +34,27 @@ export function PartnerLogos() {
         <div className="flex flex-col md:flex-row items-center gap-6 py-8">
           {/* Label */}
           <p className="shrink-0 text-xs font-semibold uppercase tracking-widest text-[var(--text-muted)] md:w-32 md:text-right">
-            Trusted by
+            Powered By
           </p>
 
           {/* Divider */}
           <div className="hidden md:block h-6 w-px bg-[var(--border)]" />
 
           {/* Slider */}
-          <div className="flex-1 relative">
-            <InfiniteSlider gap={80} duration={35} durationOnHover={70}>
+          <div className="flex-1 relative min-w-0">
+            <InfiniteSlider gap={56} duration={20} durationOnHover={42}>
               {partners.map((p) => (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
+                <div
                   key={p.name}
-                  src={p.logo}
-                  alt={p.name}
-                  height={p.height}
-                  className="grayscale opacity-40 hover:opacity-70 transition-opacity object-contain"
-                  style={{ height: p.height, maxWidth: 120 }}
-                />
+                  className="flex h-11 w-[9.5rem] shrink-0 items-center justify-center sm:h-12 sm:w-40"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={p.logo}
+                    alt={p.name}
+                    className="max-h-full max-w-full object-contain object-center grayscale opacity-40 transition-opacity hover:opacity-70"
+                  />
+                </div>
               ))}
             </InfiniteSlider>
             {/* Fade edges */}

@@ -12,7 +12,7 @@ import { fadeInUp, staggerContainer, staggerItem, transitions, VIEWPORT } from "
 
 const trustChips = [
   { label: "ICICI Bank escrow",          Icon: ShieldCheckIcon },
-  { label: "20+ legal services",         Icon: BriefcaseIcon },
+  { label: "Digital process",         Icon: BriefcaseIcon },
   { label: "Fixed, transparent pricing", Icon: CurrencyRupeeIcon },
 ];
 
@@ -47,7 +47,7 @@ export function HeroSection() {
             >
               <span className="eyebrow">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--success)] inline-block" />
-                Bangalore resale specialists
+                Trusted by 100+ home buyers
               </span>
             </motion.div>
 
@@ -74,8 +74,7 @@ export function HeroSection() {
               animate="visible"
               transition={{ ...transitions.fadeInUp, delay: 0.2 }}
             >
-              Legal diligence, escrow-protected payments, and title transfer —
-              in 21 days, start to keys.
+              Legal diligence, escrow-protected payments, title transfer. Done from the comfort of your phone.
             </motion.p>
 
             {/* CTAs */}
