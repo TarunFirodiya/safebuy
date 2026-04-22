@@ -1,6 +1,7 @@
 import { Nav } from "@/components/nav";
 import { HeroSection } from "@/components/sections/hero";
 import { PartnerLogos } from "@/components/sections/partner-logos";
+import { Highlights } from "@/components/sections/highlights";
 import { FeaturesSection } from "@/components/sections/features";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { ServicesBundles } from "@/components/sections/services-bundles";
@@ -17,8 +18,9 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <PartnerLogos />
-        <FeaturesSection />
+        <Highlights />
         <HowItWorks />
+        <FeaturesSection />
         <TransactionDashboard />
         <ServicesBundles />
         <TestimonialsSection />

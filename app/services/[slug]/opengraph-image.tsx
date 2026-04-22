@@ -59,7 +59,7 @@ export default async function OgImage({
                 border: "1px solid #e6ebf1",
               }}
             >
-              {categoryLabels[service.category]}
+              {categoryLabels[service.categories[0]]}
             </div>
           )}
         </div>

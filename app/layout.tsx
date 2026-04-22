@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
-import type { Organization, WithContext } from "schema-dts";
+import type { LegalService, Organization, WithContext } from "schema-dts";
 import "./globals.css";
 
 const sans = Plus_Jakarta_Sans({
@@ -62,6 +62,35 @@ const orgJsonLd: WithContext<Organization> = {
   ],
 };
 
+// LegalService is a subtype of LocalBusiness — surfaces the brand in local
+// search / map results. TODO(seo): fill in streetAddress, postalCode, telephone
+// and geo coordinates once a registered business address is finalised.
+const localBusinessJsonLd: WithContext<LegalService> = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  name: "Jumbo SafeBuy",
+  url: "https://jumbosafebuy.in",
+  image: "https://jumbosafebuy.in/jumbo-safebuy-logo.png",
+  priceRange: "₹₹",
+  areaServed: [
+    { "@type": "City", name: "Bangalore" },
+    { "@type": "State", name: "Karnataka" },
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bangalore",
+    addressRegion: "KA",
+    addressCountry: "IN",
+  },
+  knowsAbout: [
+    "Property title verification",
+    "Property registration",
+    "Khata transfer",
+    "TDS filing",
+    "Encumbrance certificate",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -74,6 +103,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
         {children}
       </body>

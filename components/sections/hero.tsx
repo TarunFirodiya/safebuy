@@ -7,7 +7,7 @@ import {
   BriefcaseIcon,
   CurrencyRupeeIcon,
 } from "@heroicons/react/24/outline";
-import { LeadModal } from "@/components/lead-modal";
+import { CalendlyModal } from "@/components/calendly-modal";
 import { fadeInUp, staggerContainer, staggerItem, transitions, VIEWPORT } from "@/lib/motion";
 
 const trustChips = [
@@ -17,11 +17,11 @@ const trustChips = [
 ];
 
 export function HeroSection() {
-  const [leadOpen, setLeadOpen] = useState(false);
+  const [calendlyOpen, setCalendlyOpen] = useState(false);
 
   return (
     <>
-      <LeadModal open={leadOpen} onOpenChange={setLeadOpen} />
+      <CalendlyModal open={calendlyOpen} onOpenChange={setCalendlyOpen} />
 
       <section className="relative min-h-[92vh] flex items-center pt-16 overflow-hidden bg-stripe-mesh">
         {/* Subtle grid overlay */}
@@ -86,22 +86,11 @@ export function HeroSection() {
               transition={{ ...transitions.fadeInUp, delay: 0.28 }}
             >
               <button
-                onClick={() => setLeadOpen(true)}
+                type="button"
+                onClick={() => setCalendlyOpen(true)}
                 className="inline-flex items-center justify-center h-11 px-6 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity shadow-sm"
               >
                 Talk to an expert
-              </button>
-              <button
-                onClick={() =>
-                  window.open(
-                    "https://cal.com/tarunfirodiya/jumbosafebuy",
-                    "_blank",
-                    "noopener,noreferrer"
-                  )
-                }
-                className="inline-flex items-center justify-center h-11 px-6 rounded-md border border-[var(--border)] bg-white text-sm font-medium text-[var(--text-secondary)] hover:border-[var(--border-strong)] hover:text-foreground transition-colors"
-              >
-                Book a free 15-min call
               </button>
             </motion.div>
 

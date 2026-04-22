@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { PhoneIcon } from "@heroicons/react/24/outline";
+import { BookCalendlyButton } from "@/components/book-calendly-button";
 import {
   Accordion,
   AccordionContent,
@@ -34,19 +35,10 @@ export function FaqSection() {
               The same questions come up before every transfer. Here's exactly
               how we handle them.
             </p>
-            <button
-              onClick={() =>
-                window.open(
-                  "https://cal.com/tarunfirodiya/jumbosafebuy",
-                  "_blank",
-                  "noopener,noreferrer"
-                )
-              }
-              className="mt-8 inline-flex items-center gap-2 h-10 px-5 rounded-md border border-[var(--border)] bg-[var(--surface)] text-sm font-medium text-foreground hover:border-[var(--border-strong)] hover:bg-white transition-colors"
-            >
+            <BookCalendlyButton className="mt-8 inline-flex items-center gap-2 h-10 px-5 rounded-md border border-[var(--border)] bg-[var(--surface)] text-sm font-medium text-foreground hover:border-[var(--border-strong)] hover:bg-white transition-colors">
               <PhoneIcon className="w-4 h-4 text-[var(--text-muted)]" />
-              Still unsure? Book a 15-min call
-            </button>
+              Still unsure? Book a call
+            </BookCalendlyButton>
           </motion.div>
 
           {/* Right — accordion */}

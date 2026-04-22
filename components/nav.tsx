@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { LeadModal } from "@/components/lead-modal";
+import { CalendlyModal } from "@/components/calendly-modal";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -17,10 +18,12 @@ const navLinks = [
 export function Nav() {
   const [menuOpen, setMenuOpen]   = useState(false);
   const [leadOpen, setLeadOpen]   = useState(false);
+  const [calendlyOpen, setCalendlyOpen] = useState(false);
 
   return (
     <>
       <LeadModal open={leadOpen} onOpenChange={setLeadOpen} />
+      <CalendlyModal open={calendlyOpen} onOpenChange={setCalendlyOpen} />
 
       <header className="fixed top-0 inset-x-0 z-40">
         <nav className="bg-white/80 backdrop-blur-xl border-b border-[var(--border)]">
@@ -58,13 +61,8 @@ export function Nav() {
               {/* Desktop CTAs */}
               <div className="hidden lg:flex items-center gap-3">
                 <button
-                  onClick={() =>
-                    window.open(
-                      "https://cal.com/tarunfirodiya/jumbosafebuy",
-                      "_blank",
-                      "noopener,noreferrer"
-                    )
-                  }
+                  type="button"
+                  onClick={() => setCalendlyOpen(true)}
                   className="text-sm font-medium text-[var(--text-secondary)] hover:text-foreground transition-colors px-3 py-2"
                 >
                   Book a call
@@ -109,17 +107,14 @@ export function Nav() {
                 </ul>
                 <div className="flex flex-col gap-2 pt-2 border-t border-[var(--border)]">
                   <button
+                    type="button"
                     onClick={() => {
                       setMenuOpen(false);
-                      window.open(
-                        "https://cal.com/tarunfirodiya/jumbosafebuy",
-                        "_blank",
-                        "noopener,noreferrer"
-                      );
+                      setCalendlyOpen(true);
                     }}
                     className="w-full py-2.5 text-sm font-medium text-[var(--text-secondary)] border border-[var(--border)] rounded-md hover:bg-[var(--surface)] transition-colors"
                   >
-                    Book a free 15-min call
+                    Book a call
                   </button>
                   <button
                     onClick={() => {

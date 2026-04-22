@@ -4,15 +4,15 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
-import { LeadModal } from "@/components/lead-modal";
+import { CalendlyModal } from "@/components/calendly-modal";
 import { fadeInUp, transitions, VIEWPORT } from "@/lib/motion";
 
 export function CtaStrip() {
-  const [leadOpen, setLeadOpen] = useState(false);
+  const [calendlyOpen, setCalendlyOpen] = useState(false);
 
   return (
     <>
-      <LeadModal open={leadOpen} onOpenChange={setLeadOpen} />
+      <CalendlyModal open={calendlyOpen} onOpenChange={setCalendlyOpen} />
 
       <section className="section-wrapper bg-[var(--foreground)]">
         <div className="container-lg px-6 md:px-8 text-center">
@@ -30,13 +30,14 @@ export function CtaStrip() {
               Ready to transfer safely?
             </h2>
             <p className="mt-4 text-lg text-white/70 max-w-md mx-auto text-balance">
-              Start with a free 15-minute call. We'll tell you exactly which
-              services you need.
+              Start with a free call. We'll tell you exactly which services you
+              need.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
-                onClick={() => setLeadOpen(true)}
+                type="button"
+                onClick={() => setCalendlyOpen(true)}
                 className="inline-flex items-center justify-center h-12 px-7 rounded-md bg-white text-[var(--foreground)] text-sm font-semibold hover:bg-white/90 transition-colors"
               >
                 Talk to an expert
