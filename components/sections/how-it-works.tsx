@@ -403,12 +403,11 @@ export function HowItWorks() {
         >
           <span className="eyebrow">How it works</span>
           <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tight text-foreground text-balance max-w-2xl mx-auto">
-            From lock-in to{" "}
+            From token to{" "}
             <span className="text-[var(--primary)]">keys in hand</span>
           </h2>
           <p className="mt-4 text-lg text-[var(--text-secondary)] max-w-xl mx-auto text-balance">
-            Four clear steps, 21 days door to door. Start with the full
-            journey, or pick a single service for one step.
+            SafeBuy handles all the complexity of buying a resale home from the comfort of your phone with 24*7 support.
           </p>
         </motion.div>
 
@@ -526,11 +525,10 @@ export function HowItWorks() {
         >
           <div>
             <p className="font-semibold text-foreground tracking-tight">
-              Just need help with one thing?
+              Need help with real-estate paperwork?
             </p>
             <p className="mt-1 text-sm text-[var(--text-secondary)]">
-              Browse our catalog of 20+ individual services. Fixed prices, clear
-              results, no bundling required.
+              Browse our catalog of 30+ legal & financial services related to Bangalore real-estate
             </p>
           </div>
           <Link

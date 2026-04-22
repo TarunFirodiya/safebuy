@@ -230,8 +230,8 @@ export function FeaturesSection() {
             The guardrails your biggest purchase deserves
           </h2>
           <p className="mt-4 text-lg text-[var(--text-secondary)] max-w-xl text-balance">
-            Purpose-built for Indian resale: every rupee in escrow, every
-            document verified, every closing tracked door to door.
+            KYC, escrow protection, lawyer-led paperwork, Government coordination
+            every complexity handled with ease.
           </p>
         </motion.div>
 

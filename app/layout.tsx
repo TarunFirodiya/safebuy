@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import type { LegalService, Organization, WithContext } from "schema-dts";
 import "./globals.css";
 
@@ -91,6 +92,9 @@ const localBusinessJsonLd: WithContext<LegalService> = {
   ],
 };
 
+const gaMeasurementId =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-4MD415H4J8";
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -109,6 +113,18 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
         {children}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gaMeasurementId}');
+          `}
+        </Script>
       </body>
     </html>
   );

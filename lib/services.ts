@@ -160,7 +160,7 @@ export const services: Service[] = [
   {
     slug: "e-khata-ec-update",
     name: "E-Khata EC Update",
-    price: 2500,
+    price: 2499,
     deliveryTime: "7 days",
     categories: ["before-buying", "for-owners"],
     shortDescription:
@@ -182,7 +182,7 @@ export const services: Service[] = [
   {
     slug: "title-verification",
     name: "Title Verification",
-    price: 12500,
+    price: 12499,
     deliveryTime: "7 days",
     categories: ["before-buying"],
     shortDescription:
@@ -212,7 +212,7 @@ export const services: Service[] = [
   {
     slug: "escrow",
     name: "Escrow",
-    price: 5000,
+    price: 4999,
     deliveryTime: "1 day",
     categories: ["before-buying"],
     shortDescription:
@@ -316,7 +316,7 @@ export const services: Service[] = [
   {
     slug: "power-of-attorney",
     name: "Power of Attorney",
-    price: 12000,
+    price: 11999,
     deliveryTime: "10–15 days",
     categories: ["for-buying", "for-owners"],
     shortDescription:
@@ -431,7 +431,7 @@ export const services: Service[] = [
   {
     slug: "notary",
     name: "Notary",
-    price: 2500,
+    price: 2499,
     deliveryTime: "2 days",
     categories: ["before-buying", "for-buying", "after-buying", "for-owners"],
     shortDescription:
@@ -455,7 +455,7 @@ export const services: Service[] = [
   {
     slug: "sale-agreement-review",
     name: "Sale Agreement Review",
-    price: 3000,
+    price: 2999,
     deliveryTime: "5 days",
     categories: ["for-buying"],
     shortDescription:
@@ -477,7 +477,7 @@ export const services: Service[] = [
   {
     slug: "sale-deed-review",
     name: "Sale Deed Review",
-    price: 3000,
+    price: 2999,
     deliveryTime: "5 days",
     categories: ["for-buying"],
     shortDescription:
@@ -499,7 +499,7 @@ export const services: Service[] = [
   {
     slug: "other-legal-documents-review",
     name: "Other Legal Documents Review",
-    price: 3000,
+    price: 2999,
     deliveryTime: "5 days",
     categories: ["for-buying"],
     shortDescription:
@@ -569,7 +569,7 @@ export const services: Service[] = [
   {
     slug: "e-stamping",
     name: "E-Stamping",
-    price: 4000,
+    price: 3999,
     deliveryTime: "2 days",
     categories: ["for-buying"],
     shortDescription:
@@ -635,7 +635,7 @@ export const services: Service[] = [
   {
     slug: "modt-registration",
     name: "MODT Registration (Excluding LE)",
-    price: 7000,
+    price: 6999,
     deliveryTime: "1 day",
     categories: ["for-buying", "for-owners"],
     shortDescription:
@@ -657,7 +657,7 @@ export const services: Service[] = [
   {
     slug: "discharge-deed-registration",
     name: "Discharge Deed Registration",
-    price: 7000,
+    price: 6999,
     deliveryTime: "1 day",
     categories: ["for-buying", "for-owners"],
     shortDescription:
@@ -728,7 +728,7 @@ export const services: Service[] = [
   {
     slug: "low-tds-nri",
     name: "Low TDS Assistance for NRI",
-    price: 25000,
+    price: 24999,
     deliveryTime: "30 days",
     categories: ["for-buying", "for-owners"],
     shortDescription:
@@ -752,7 +752,7 @@ export const services: Service[] = [
   {
     slug: "e-khata-correction",
     name: "E-Khata Correction",
-    price: 25000,
+    price: 24999,
     deliveryTime: "30 days",
     categories: ["before-buying", "for-owners"],
     shortDescription:
@@ -783,7 +783,7 @@ export const services: Service[] = [
   {
     slug: "manual-to-e-khata-conversion",
     name: "Manual to E-Khata Conversion",
-    price: 25000,
+    price: 24999,
     deliveryTime: "30 days",
     categories: ["before-buying", "for-owners"],
     shortDescription:
@@ -815,7 +815,7 @@ export const services: Service[] = [
   {
     slug: "e-khata-registration",
     name: "E-Khata Registration (including LE)",
-    price: 25000,
+    price: 24999,
     deliveryTime: "30 days",
     categories: ["before-buying", "for-owners"],
     shortDescription:
@@ -880,7 +880,7 @@ export const services: Service[] = [
   {
     slug: "ward-correction-property-tax",
     name: "Ward Correction in Property Tax Receipt",
-    price: 3000,
+    price: 2999,
     deliveryTime: "10–15 days",
     categories: ["before-buying", "for-owners"],
     shortDescription:
@@ -931,7 +931,7 @@ export const services: Service[] = [
   {
     slug: "e-khata-transfer-bbmp",
     name: "E-Khata Transfer — BBMP",
-    price: 15000,
+    price: 14999,
     deliveryTime: "20–30 days",
     categories: ["after-buying"],
     shortDescription:
@@ -959,7 +959,7 @@ export const services: Service[] = [
   {
     slug: "e-khata-transfer-panchayat",
     name: "E-Khata Transfer — Panchayat",
-    price: 25000,
+    price: 24999,
     deliveryTime: "45–60 days",
     categories: ["after-buying"],
     shortDescription:
@@ -1009,7 +1009,7 @@ export const services: Service[] = [
   {
     slug: "bescom-transfer",
     name: "BESCOM Transfer",
-    price: 7500,
+    price: 7499,
     deliveryTime: "10–15 days",
     categories: ["after-buying"],
     shortDescription:
@@ -1074,13 +1074,13 @@ export const bundles: Bundle[] = [
   {
     slug: "safebuy-shield",
     name: "SafeBuy Shield",
-    price: 12500,
+    price: 12499,
     shortDescription:
       "Comprehensive review of property documents with a professional legal opinion.",
     longDescription:
       "For buyers who want a comprehensive review of property documents before committing. You receive a complete legal report signed and sealed by a reputed law firm — ready to use as your go / no-go decision for the purchase.",
     serviceSlugOrder: shieldSlugs,
-    savingsAmount: computeSavings(shieldSlugs, 12500),
+    savingsAmount: computeSavings(shieldSlugs, 12499),
     razorpayLink: "https://rzp.io/rzp/safebuy-shield",
     features: [
       "Title Search Report",
@@ -1097,13 +1097,13 @@ export const bundles: Bundle[] = [
   {
     slug: "safebuy-seal",
     name: "SafeBuy Seal",
-    price: 20000,
+    price: 19999,
     shortDescription:
       "End-to-end registration support — agreement, deed, TDS, and stamp duty handled for you.",
     longDescription:
       "For buyers ready to execute the transaction. We draft the sale agreement and sale deed, assist with TDS (Form 26QB), and handle BBMP stamp duty payment — so registration goes through without surprises.",
     serviceSlugOrder: sealSlugs,
-    savingsAmount: computeSavings(sealSlugs, 20000),
+    savingsAmount: computeSavings(sealSlugs, 19999),
     razorpayLink: "https://rzp.io/rzp/safebuy-seal",
     features: [
       "Drafting of Sale Agreement",
@@ -1121,13 +1121,13 @@ export const bundles: Bundle[] = [
   {
     slug: "safebuy-assure",
     name: "SafeBuy Assure",
-    price: 30000,
+    price: 29999,
     shortDescription:
       "Post-registration formalities — Khata transfer, BESCOM, and tax name change.",
     longDescription:
       "For buyers who need assistance completing all post-registration formalities after purchase — ownership updates, utility transfers, and property tax record updates in the buyer's name.",
     serviceSlugOrder: assureSlugs,
-    savingsAmount: computeSavings(assureSlugs, 30000),
+    savingsAmount: computeSavings(assureSlugs, 29999),
     razorpayLink: "https://rzp.io/rzp/safebuy-assure",
     features: [
       "Khata Transfer (BBMP)",
@@ -1144,14 +1144,14 @@ export const bundles: Bundle[] = [
   {
     slug: "safebuy-plus",
     name: "SafeBuy Plus",
-    price: 75000,
+    price: 74999,
     badge: "Most Popular",
     shortDescription:
       "The only package a buyer should consider — legal diligence, registration, and post-registration handled end-to-end.",
     longDescription:
       "Our most comprehensive package. Covers legal due diligence, drafting and registration of the sale documents, stamp duty and TDS compliance, and every post-registration transfer — all with a dedicated coordinator from start to keys.",
     serviceSlugOrder: plusSlugs,
-    savingsAmount: computeSavings(plusSlugs, 75000),
+    savingsAmount: computeSavings(plusSlugs, 74999),
     razorpayLink: "https://rzp.io/rzp/safebuy-plus",
     features: [
       "Title Search Report",

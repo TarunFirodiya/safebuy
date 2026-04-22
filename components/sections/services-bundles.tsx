@@ -81,9 +81,6 @@ function BundleCard({ bundle, delay = 0 }: { bundle: Bundle; delay?: number }) {
         )}
 
         <div className="flex-1">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--text-muted)] mb-2">
-            Package · {bundle.serviceSlugOrder.length} services
-          </p>
           <h3 className="text-xl font-bold tracking-tight text-foreground">
             {bundle.name}
           </h3>
@@ -135,7 +132,7 @@ function BundleCard({ bundle, delay = 0 }: { bundle: Bundle; delay?: number }) {
                 : "border border-[var(--border)] text-foreground hover:bg-[var(--surface)]"
             }`}
           >
-            Book {bundle.name}
+            Book Now
             <ArrowRightIcon className="w-4 h-4" />
           </button>
         </div>
@@ -160,11 +157,10 @@ export function ServicesBundles() {
         >
           <span className="eyebrow">Pricing</span>
           <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-            Pay for exactly what you need
+            Transparent pricing. No hidden fees.
           </h2>
           <p className="mt-4 text-lg text-[var(--text-secondary)] max-w-lg mx-auto text-balance">
-            Every service is fixed-price with a clear result. Pick a package for
-            the full journey, or book a single service for one step.
+            Secure the biggest purchase of your life with SafeBuy.
           </p>
           <div className="mt-6">
             <Link

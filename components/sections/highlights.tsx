@@ -88,11 +88,10 @@ export function Highlights() {
         >
           <span className="eyebrow">Highlights</span>
           <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tight text-foreground text-balance max-w-2xl mx-auto">
-            The safest way to close a resale home
+            The safest way to buy a resale home
           </h2>
           <p className="mt-4 text-lg text-[var(--text-secondary)] max-w-xl mx-auto text-balance">
-            SafeBuy is built for Indian resale: escrow-protected payments,
-            lawyer-led diligence, and a door-to-door closing handled online.
+            2 out of 3 court cases are property related. SafeBuy ensures your home never goes to court. 
           </p>
         </motion.div>
 

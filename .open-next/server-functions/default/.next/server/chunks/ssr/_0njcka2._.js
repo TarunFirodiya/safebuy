@@ -1,0 +1,3 @@
+module.exports=[63652,(a,b,c)=>{"use strict";c._=function(a){return a&&a.__esModule?a:{default:a}}},91771,a=>{"use strict";var b=a.i(81673),c=a.i(86547);a.s(["FaqAccordion",0,function({faqs:a}){return 0===a.length?null:(0,b.jsx)(c.Accordion,{className:"divide-y divide-[var(--border)] border-y border-[var(--border)]",children:a.map((a,d)=>(0,b.jsxs)(c.AccordionItem,{value:`faq-${d}`,children:[(0,b.jsx)(c.AccordionTrigger,{className:"py-4 text-base font-medium",children:a.q}),(0,b.jsx)(c.AccordionContent,{children:(0,b.jsx)("p",{className:"text-sm text-[var(--text-secondary)] leading-relaxed",children:a.a})})]},d))})}])}];
+
+//# sourceMappingURL=_0njcka2._.js.map

@@ -62,7 +62,7 @@ export function HeroSection() {
             >
               Buy your resale home{" "}
               <span className="italic text-[var(--primary)]">
-                without losing sleep.
+                with safety
               </span>
             </motion.h1>
 
