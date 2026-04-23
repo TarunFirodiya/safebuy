@@ -8,6 +8,10 @@
     "build:next": "next build",
     "build:cf": "opennextjs-cloudflare build",
     "start": "next start",
+    "typecheck": "tsc --noEmit --skipLibCheck",
+    "cf-typegen": "wrangler types",
+    "db:migrate:local": "wrangler d1 migrations apply safebuy --local",
+    "db:migrate:remote": "wrangler d1 migrations apply safebuy --remote",
     "deploy": "pnpm build:cf && opennextjs-cloudflare deploy",
     "preview": "pnpm build:cf && opennextjs-cloudflare preview"
   },

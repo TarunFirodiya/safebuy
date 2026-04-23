@@ -8,7 +8,6 @@ import type {
   WithContext,
 } from "schema-dts";
 import {
-  ArrowRightIcon,
   CheckCircleIcon,
   ClockIcon,
   ArrowLeftIcon,
@@ -18,12 +17,14 @@ import {
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { BookCalendlyButton } from "@/components/book-calendly-button";
+import { BuyNowButton } from "@/components/buy-now-button";
 import {
   bundles,
   getBundleBySlug,
   getBundleServices,
   categoryLabels,
   formatServicePrice,
+  isBundleBuyable,
 } from "@/lib/services";
 import { formatINR } from "@/lib/utils";
 import { FaqAccordion } from "@/app/services/[slug]/faq-accordion";
@@ -380,15 +381,15 @@ export default async function BundleDetailPage({
                   </p>
 
                   <div className="mt-6 space-y-3">
-                    <a
-                      href={bundle.razorpayLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 w-full h-11 rounded-md bg-[var(--primary)] text-white text-sm font-semibold hover:bg-[var(--primary-dark)] transition-colors"
-                    >
-                      Book this bundle
-                      <ArrowRightIcon className="w-4 h-4" />
-                    </a>
+                    {isBundleBuyable(bundle) ? (
+                      <BuyNowButton
+                        skuType="bundle"
+                        skuSlug={bundle.slug}
+                        skuName={bundle.name}
+                        amountRupees={bundle.price}
+                        label="Book this bundle"
+                      />
+                    ) : null}
                     <BookCalendlyButton className="flex items-center justify-center w-full h-10 rounded-md border border-[var(--border)] text-sm font-medium text-foreground hover:bg-[var(--surface)] transition-colors">
                       Talk to a SafeBuy advisor
                     </BookCalendlyButton>

@@ -202,4 +202,79 @@
     border-color: var(--primary);
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 12%, transparent);
   }
+
+  /* Legal / policy pages — simple long-form typography */
+  .legal-article h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--foreground);
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+  @media (min-width: 768px) {
+    .legal-article h1 { font-size: 2.5rem; }
+  }
+  .legal-article h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--foreground);
+    letter-spacing: -0.02em;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .legal-article h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--foreground);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .legal-article p {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0.75rem 0;
+  }
+  .legal-article ul,
+  .legal-article ol {
+    margin: 0.75rem 0 0.75rem 1.25rem;
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+  .legal-article ul { list-style: disc; }
+  .legal-article ol { list-style: decimal; }
+  .legal-article li { margin: 0.25rem 0; }
+  .legal-article a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+  }
+  .legal-article a:hover { border-bottom-color: var(--primary); }
+  .legal-article strong { color: var(--foreground); font-weight: 600; }
+  .legal-article .last-updated {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .legal-article table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.875rem;
+  }
+  .legal-article th,
+  .legal-article td {
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .legal-article th {
+    background: var(--surface);
+    font-weight: 600;
+    color: var(--foreground);
+  }
 }

@@ -46,6 +46,13 @@ export interface Service {
   priceNote?: string;
   /** Alternate pricing tiers (e.g. single vs joint buyer for TDS). */
   priceAlternates?: PriceAlternate[];
+  /**
+   * Explicit override for whether the SKU is directly payable via Razorpay
+   * checkout. If omitted, `isServiceBuyable()` applies the default rule
+   * (price ≤ ₹10,000 and no variable pricing) — above that threshold
+   * customers are steered to a consultation call first.
+   */
+  buyable?: boolean;
   deliveryTime: string;
   categories: ServiceCategory[];
   shortDescription: string;
@@ -82,7 +89,12 @@ export interface Bundle {
   longDescription: string;
   serviceSlugOrder: string[];
   savingsAmount: number;
-  razorpayLink: string;
+  /**
+   * Whether the bundle is purchasable online. Defaults to true via
+   * `isBundleBuyable()` since SafeBuy bundles have fixed scope; set to false
+   * to gate behind a consult call.
+   */
+  buyable?: boolean;
   features: string[];
 
   // ---- SEO scaffolding --------------------------------------------------
@@ -1081,7 +1093,6 @@ export const bundles: Bundle[] = [
       "For buyers who want a comprehensive review of property documents before committing. You receive a complete legal report signed and sealed by a reputed law firm — ready to use as your go / no-go decision for the purchase.",
     serviceSlugOrder: shieldSlugs,
     savingsAmount: computeSavings(shieldSlugs, 12499),
-    razorpayLink: "https://rzp.io/rzp/safebuy-shield",
     features: [
       "Title Search Report",
       "Scrutiny of Property Documents",
@@ -1104,7 +1115,6 @@ export const bundles: Bundle[] = [
       "For buyers ready to execute the transaction. We draft the sale agreement and sale deed, assist with TDS (Form 26QB), and handle BBMP stamp duty payment — so registration goes through without surprises.",
     serviceSlugOrder: sealSlugs,
     savingsAmount: computeSavings(sealSlugs, 19999),
-    razorpayLink: "https://rzp.io/rzp/safebuy-seal",
     features: [
       "Drafting of Sale Agreement",
       "TDS Payment Assistance (Form 26QB)",
@@ -1128,7 +1138,6 @@ export const bundles: Bundle[] = [
       "For buyers who need assistance completing all post-registration formalities after purchase — ownership updates, utility transfers, and property tax record updates in the buyer's name.",
     serviceSlugOrder: assureSlugs,
     savingsAmount: computeSavings(assureSlugs, 29999),
-    razorpayLink: "https://rzp.io/rzp/safebuy-assure",
     features: [
       "Khata Transfer (BBMP)",
       "BESCOM Transfer",
@@ -1152,7 +1161,6 @@ export const bundles: Bundle[] = [
       "Our most comprehensive package. Covers legal due diligence, drafting and registration of the sale documents, stamp duty and TDS compliance, and every post-registration transfer — all with a dedicated coordinator from start to keys.",
     serviceSlugOrder: plusSlugs,
     savingsAmount: computeSavings(plusSlugs, 74999),
-    razorpayLink: "https://rzp.io/rzp/safebuy-plus",
     features: [
       "Title Search Report",
       "Scrutiny of Property Documents",
@@ -1201,6 +1209,30 @@ export function getServicesByCategory(category: ServiceCategory): Service[] {
 export function formatServicePrice(service: Service): string {
   if (service.priceNote) return service.priceNote;
   return `₹${service.price.toLocaleString("en-IN")}`;
+}
+
+/**
+ * Default rule for whether a service can be purchased directly via Razorpay
+ * checkout without a discovery call. Can be overridden per-SKU by setting
+ * `buyable` explicitly in the catalogue entry.
+ *
+ * Rule: price ≤ ₹10,000 AND pricing is a fixed single amount (no "Per hour"
+ * note, no alternate tiers). Above that, customers go through a consult.
+ */
+const BUYABLE_PRICE_CEILING = 10_000;
+
+export function isServiceBuyable(service: Service): boolean {
+  if (typeof service.buyable === "boolean") return service.buyable;
+  if (service.priceNote) return false;
+  if (service.priceAlternates && service.priceAlternates.length > 0) {
+    return false;
+  }
+  return service.price > 0 && service.price <= BUYABLE_PRICE_CEILING;
+}
+
+export function isBundleBuyable(bundle: Bundle): boolean {
+  if (typeof bundle.buyable === "boolean") return bundle.buyable;
+  return bundle.price > 0;
 }
 
 export const categoryLabels: Record<ServiceCategory, string> = {

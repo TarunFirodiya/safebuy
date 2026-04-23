@@ -19,6 +19,7 @@ import {
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { BookCalendlyButton } from "@/components/book-calendly-button";
+import { BuyNowButton } from "@/components/buy-now-button";
 import {
   services,
   getServiceBySlug,
@@ -26,6 +27,7 @@ import {
   bundles,
   getBundleServices,
   formatServicePrice,
+  isServiceBuyable,
 } from "@/lib/services";
 import { formatINR } from "@/lib/utils";
 import { PriceBlock } from "./price-block";
@@ -472,12 +474,29 @@ export default async function ServiceDetailPage({
                   </div>
 
                   <div className="mt-6 space-y-3">
-                    <BookCalendlyButton className="flex items-center justify-center gap-2 w-full h-11 rounded-md bg-[var(--primary)] text-white text-sm font-semibold hover:bg-[var(--primary-dark)] transition-colors">
-                      Book a free call
-                    </BookCalendlyButton>
-                    <p className="text-center text-xs text-[var(--text-muted)]">
-                      or talk to a SafeBuy advisor — we'll tell you exactly what you need
-                    </p>
+                    {isServiceBuyable(service) ? (
+                      <>
+                        <BuyNowButton
+                          skuType="service"
+                          skuSlug={service.slug}
+                          skuName={service.name}
+                          amountRupees={service.price}
+                          label="Buy now"
+                        />
+                        <BookCalendlyButton className="flex items-center justify-center w-full h-10 rounded-md border border-[var(--border)] text-sm font-medium text-foreground hover:bg-[var(--surface)] transition-colors">
+                          Talk to an advisor first
+                        </BookCalendlyButton>
+                      </>
+                    ) : (
+                      <>
+                        <BookCalendlyButton className="flex items-center justify-center gap-2 w-full h-11 rounded-md bg-[var(--primary)] text-white text-sm font-semibold hover:bg-[var(--primary-dark)] transition-colors">
+                          Book a free call
+                        </BookCalendlyButton>
+                        <p className="text-center text-xs text-[var(--text-muted)]">
+                          Scope-dependent — we'll confirm price and timeline on the call, then send a payment link.
+                        </p>
+                      </>
+                    )}
                   </div>
 
                   <div className="mt-6 pt-5 border-t border-[var(--border)] space-y-2">

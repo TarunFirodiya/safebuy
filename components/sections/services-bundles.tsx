@@ -14,10 +14,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { BuyNowButton } from "@/components/buy-now-button";
 import {
   bundles,
   services,
   formatServicePrice,
+  isBundleBuyable,
   type Bundle,
   type Service,
 } from "@/lib/services";
@@ -122,19 +124,28 @@ function BundleCard({ bundle, delay = 0 }: { bundle: Bundle; delay?: number }) {
         </div>
 
         <div className="mt-7 flex flex-col gap-2">
-          <button
-            onClick={() =>
-              window.open(bundle.razorpayLink, "_blank", "noopener,noreferrer")
-            }
-            className={`w-full inline-flex items-center justify-center gap-2 h-11 rounded-md text-sm font-semibold transition-opacity ${
-              bundle.badge
-                ? "bg-primary text-primary-foreground hover:opacity-90"
-                : "border border-[var(--border)] text-foreground hover:bg-[var(--surface)]"
-            }`}
-          >
-            Book Now
-            <ArrowRightIcon className="w-4 h-4" />
-          </button>
+          {isBundleBuyable(bundle) ? (
+            <BuyNowButton
+              skuType="bundle"
+              skuSlug={bundle.slug}
+              skuName={bundle.name}
+              amountRupees={bundle.price}
+              label="Book now"
+              variant={bundle.badge ? "primary" : "outline"}
+            />
+          ) : (
+            <Link
+              href={`/bundles/${bundle.slug}`}
+              className={`w-full inline-flex items-center justify-center gap-2 h-11 rounded-md text-sm font-semibold transition-opacity ${
+                bundle.badge
+                  ? "bg-primary text-primary-foreground hover:opacity-90"
+                  : "border border-[var(--border)] text-foreground hover:bg-[var(--surface)]"
+              }`}
+            >
+              Learn more
+              <ArrowRightIcon className="w-4 h-4" />
+            </Link>
+          )}
         </div>
       </motion.div>
     </>

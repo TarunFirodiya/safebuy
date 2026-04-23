@@ -15,9 +15,11 @@ const company = [
 ];
 
 const resources = [
-  { label: "Help",           href: "https://www.jumbosafebuy.in/help", external: true },
-  { label: "Privacy Policy", href: "/privacy-policy",                  external: false },
-  { label: "Terms",          href: "/terms",                           external: false },
+  { label: "Contact",           href: "/contact",          external: false },
+  { label: "Terms",             href: "/terms",            external: false },
+  { label: "Privacy Policy",    href: "/privacy-policy",   external: false },
+  { label: "Refund Policy",     href: "/refund-policy",    external: false },
+  { label: "Service Delivery",  href: "/shipping-policy",  external: false },
 ];
 
 const socials = [

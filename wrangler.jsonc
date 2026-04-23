@@ -1,27 +1,48 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "account_id": "313d4091aa15736469d9d52db1998e2a",
-  "name": "safebuy",
-  "main": ".open-next/worker.js",
-  "compatibility_date": "2026-04-22",
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  "routes": [
-    {
-      "pattern": "safebuy.jumbohomes.in/*",
-      "zone_name": "jumbohomes.in"
-    }
-  ],
-  "assets": {
-    "directory": ".open-next/assets",
-    "binding": "ASSETS"
-  },
-  "services": [
-    {
-      "binding": "WORKER_SELF_REFERENCE",
-      "service": "safebuy"
-    }
-  ],
-  "images": {
-    "binding": "IMAGES"
-  }
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"account_id": "313d4091aa15736469d9d52db1998e2a",
+	"name": "safebuy",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2026-04-22",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"routes": [
+		{
+			"pattern": "safebuy.jumbohomes.in/*",
+			"zone_name": "jumbohomes.in"
+		}
+	],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		{
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "safebuy"
+		}
+	],
+	"images": {
+		"binding": "IMAGES"
+	},
+	// Public (non-secret) runtime config. Secrets live in `wrangler secret put`.
+	// See README.md → "Razorpay setup" for the full env var list.
+	"vars": {
+		"NEXT_PUBLIC_SITE_URL": "https://safebuy.jumbohomes.in",
+		"RAZORPAY_ENV": "live"
+	},
+	// D1 database for orders, customers, payments, and webhook idempotency log.
+	// Apply migrations with:
+	//   pnpm db:migrate:local
+	//   pnpm db:migrate:remote
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "safebuy",
+			"database_id": "0d094286-02eb-46ee-92bd-0e4263ae703b",
+			"migrations_dir": "./migrations"
+		}
+	]
 }
