@@ -31,7 +31,7 @@ const features = [
     statLabel: null as string | null,
     title: "Your money sits with ICICI, not us",
     description:
-      "All payments flow through a Jumbo SafeBuy escrow account held at ICICI Bank. Funds are released to the seller only after legal milestones are signed off — never before.",
+      "All payments flow through a SafeBuy escrow account held at ICICI Bank. Funds are released to the seller only after legal milestones are signed off — never before.",
     accent: "var(--primary)",
     accentSubtle: "var(--accent)",
   },
@@ -61,7 +61,7 @@ const features = [
     statLabel: null as string | null,
     title: "Trusted across Bangalore",
     description:
-      "Families in Whitefield, HSR Layout, Koramangala, Indiranagar, and Sarjapur have transferred safely with Jumbo SafeBuy. Fixed prices, no hidden commissions.",
+      "Families in Whitefield, HSR Layout, Koramangala, Indiranagar, and Sarjapur have transferred safely with SafeBuy. Fixed prices, no hidden commissions.",
     accent: "var(--primary)",
     accentSubtle: "var(--accent)",
   },

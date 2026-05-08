@@ -37,17 +37,14 @@ export function Footer() {
 
           {/* Brand col */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="inline-flex items-center gap-2.5">
+            <Link href="/" className="inline-flex items-center">
               <Image
-                src="/jumbo-safebuy-logo.png"
-                alt="Jumbo SafeBuy"
-                width={28}
-                height={28}
-                className="h-7 w-auto"
+                src="/safebuy-logo.png"
+                alt="SafeBuy"
+                width={784}
+                height={348}
+                className="h-11 w-auto max-w-[230px] sm:h-12 sm:max-w-[260px]"
               />
-              <span className="font-semibold text-base text-foreground tracking-tight">
-                Jumbo SafeBuy
-              </span>
             </Link>
             <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-xs">
               The safest way to buy a resale home in Bangalore. Fixed prices, escrow-protected payments, 21-day transfer.
@@ -59,7 +56,7 @@ export function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Jumbo SafeBuy on ${s.label}`}
+                  aria-label={`SafeBuy on ${s.label}`}
                   className="text-xs font-medium text-[var(--text-muted)] hover:text-foreground transition-colors"
                 >
                   {s.label}
@@ -129,7 +126,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-[var(--border)] flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs text-[var(--text-muted)]">
-          <p>© {new Date().getFullYear()} Jumbo SafeBuy. Made in India. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} SafeBuy. Made in India. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="/terms" className="hover:text-foreground transition-colors">Terms</Link>
             <Link href="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</Link>

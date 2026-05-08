@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions — Jumbo SafeBuy",
+  title: "Terms & Conditions — SafeBuy",
   description:
-    "The terms that govern your use of the Jumbo SafeBuy platform and services.",
+    "The terms that govern your use of the SafeBuy platform and services.",
   alternates: { canonical: "/terms" },
 };
 
@@ -17,18 +17,18 @@ export default function TermsPage() {
 
       <p>
         These Terms & Conditions ("<strong>Terms</strong>") govern your access
-        to and use of the Jumbo SafeBuy website at{" "}
+        to and use of the SafeBuy website at{" "}
         <a href="https://safebuy.jumbohomes.in">safebuy.jumbohomes.in</a>{" "}
         ("<strong>Platform</strong>") and the legal and property-related
         services offered through it ("<strong>Services</strong>"), operated by
-        NoBrokerage Homes Private Limited ("<strong>Jumbo SafeBuy</strong>",{" "}
+        NoBrokerage Homes Private Limited ("<strong>SafeBuy</strong>",{" "}
         "<strong>we</strong>", "<strong>us</strong>"). By using the Platform
         or engaging our Services you agree to these Terms.
       </p>
 
       <h2>1. Scope of Services</h2>
       <p>
-        Jumbo SafeBuy provides fixed-price professional assistance for
+        SafeBuy provides fixed-price professional assistance for
         property-related legal and administrative work in Karnataka, including
         but not limited to encumbrance certificates, title verification, sale
         agreements and deeds, Khata services, property tax updates, and
@@ -40,7 +40,7 @@ export default function TermsPage() {
       <p>
         We are facilitators and document preparers. Where a Service involves a
         legal opinion, the opinion is rendered by an independent advocate on
-        record and is not provided by Jumbo SafeBuy itself. Government
+        record and is not provided by SafeBuy itself. Government
         timelines (e.g. Sub-Registrar offices, BBMP, BESCOM) are outside our
         control and actual turnaround may vary.
       </p>
@@ -69,7 +69,7 @@ export default function TermsPage() {
         </li>
         <li>
           Payments are processed by Razorpay Software Private Limited and are
-          subject to Razorpay's own terms. Jumbo SafeBuy does not store your
+          subject to Razorpay's own terms. SafeBuy does not store your
           card, UPI, or bank credentials.
         </li>
         <li>
@@ -91,7 +91,7 @@ export default function TermsPage() {
       <h2>5. Intellectual Property</h2>
       <p>
         All content on the Platform — copy, visuals, checklists, templates,
-        code, and branding — is the property of Jumbo SafeBuy or its licensors
+        code, and branding — is the property of SafeBuy or its licensors
         and is protected by applicable IP laws. You may not reproduce,
         distribute, or create derivative works without written permission.
         Documents drafted specifically for your transaction become yours once
@@ -120,7 +120,7 @@ export default function TermsPage() {
 
       <h2>8. Limitation of Liability</h2>
       <p>
-        To the maximum extent permitted by law, Jumbo SafeBuy's aggregate
+        To the maximum extent permitted by law, SafeBuy's aggregate
         liability for any claim arising out of or relating to the Services
         shall not exceed the fees actually paid by you for the specific
         Service giving rise to the claim. In no event shall we be liable for

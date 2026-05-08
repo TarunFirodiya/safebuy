@@ -38,7 +38,7 @@ export default async function OgImage({
         >
           <div
             style={{
-              background: "#635bff",
+              background: "#0a7f86",
               color: "white",
               fontSize: "14px",
               fontWeight: 700,
@@ -46,7 +46,7 @@ export default async function OgImage({
               borderRadius: "100px",
             }}
           >
-            Jumbo SafeBuy
+            SafeBuy
           </div>
           {service && (
             <div
@@ -90,7 +90,7 @@ export default async function OgImage({
                 style={{
                   fontSize: "36px",
                   fontWeight: 700,
-                  color: "#635bff",
+                  color: "#0a7f86",
                 }}
               >
                 {formatINR(service.price)}

@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { LeadModal } from "@/components/lead-modal";
-import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "Features",       href: "/#features" },
@@ -28,18 +27,15 @@ export function Nav() {
             <div className="flex items-center justify-between h-16">
 
               {/* Logo */}
-              <Link href="/" className="flex items-center gap-2.5 shrink-0">
+              <Link href="/" className="flex items-center shrink-0">
                 <Image
-                  src="/jumbo-safebuy-logo.png"
-                  alt="Jumbo SafeBuy"
-                  width={32}
-                  height={32}
-                  className="h-8 w-auto"
+                  src="/safebuy-logo.png"
+                  alt="SafeBuy"
+                  width={784}
+                  height={348}
+                  className="h-10 w-auto max-w-[210px] sm:h-11 sm:max-w-[260px]"
                   priority
                 />
-                <span className="font-semibold text-base text-foreground tracking-tight">
-                  Jumbo SafeBuy
-                </span>
               </Link>
 
               {/* Desktop nav */}

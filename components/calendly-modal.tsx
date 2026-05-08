@@ -27,7 +27,7 @@ export function CalendlyModal({ open, onOpenChange }: CalendlyModalProps) {
         </DialogHeader>
         <div className="relative min-h-[min(560px,70vh)] w-full flex-1 bg-muted/30">
           <iframe
-            title="Schedule a call — Jumbo SafeBuy"
+            title="Schedule a call — SafeBuy"
             src={CALENDLY_BOOKING_URL}
             className="absolute inset-0 h-full w-full border-0"
             loading="lazy"

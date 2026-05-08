@@ -22,7 +22,7 @@ export const testimonials: Testimonial[] = [
     location: "HSR Layout, Bangalore",
     propertyType: "First home, resale flat",
     rating: 5,
-    text: "Bought my first home through Jumbo SafeBuy. The legal diligence report gave me real confidence before I paid the token. The whole process was transparent.",
+    text: "Bought my first home through SafeBuy. The legal diligence report gave me real confidence before I paid the token. The whole process was transparent.",
   },
   {
     name: "Manav Vadher",
@@ -46,7 +46,7 @@ export const testimonials: Testimonial[] = [
     location: "Indiranagar, Bangalore",
     propertyType: "Resale independent house",
     rating: 5,
-    text: "The Jumbo SafeBuy team made selling my property completely stress-free. The escrow arrangement meant I never worried about the money. Outstanding service.",
+    text: "The SafeBuy team made selling my property completely stress-free. The escrow arrangement meant I never worried about the money. Outstanding service.",
   },
   {
     name: "Harish Gowda",
@@ -54,6 +54,6 @@ export const testimonials: Testimonial[] = [
     location: "Sarjapur, Bangalore",
     propertyType: "2BHK resale flat",
     rating: 5,
-    text: "Legal diligence found a minor encumbrance that the seller hadn't disclosed. Jumbo SafeBuy flagged it, negotiated a price adjustment, and protected my investment.",
+    text: "Legal diligence found a minor encumbrance that the seller hadn't disclosed. SafeBuy flagged it, negotiated a price adjustment, and protected my investment.",
   },
 ];

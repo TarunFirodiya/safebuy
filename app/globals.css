@@ -4,58 +4,59 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ── Stripe-inspired design tokens ────────────────────────────────────────── */
+/* ── SafeBuy brand design tokens ─────────────────────────────────────────── */
 :root {
   /* Surfaces */
   --background:           #ffffff;
-  --surface:              #f6f9fc;
+  --surface:              #f3fafb;
   --surface-raised:       #ffffff;
 
   /* Borders */
-  --border:               #e6ebf1;
-  --border-strong:        #c4cdd6;
-  --input:                #e6ebf1;
+  --border:               #d9eaed;
+  --border-strong:        #a7c6cc;
+  --input:                #d9eaed;
 
   /* Text */
-  --foreground:           #0a2540;
-  --text-secondary:       #425466;
-  --text-muted:           #697386;
-  --muted-foreground:     #697386;
+  --foreground:           #0f2e33;
+  --text-secondary:       #35545a;
+  --text-muted:           #5d7c82;
+  --muted-foreground:     #5d7c82;
 
-  /* Brand accent — Stripe indigo */
-  --primary:              #635bff;
+  /* Brand accent */
+  --primary:              #0a7f86;
+  --primary-dark:         #06646b;
   --primary-foreground:   #ffffff;
-  --ring:                 #635bff;
-  --accent:               #eef2ff;
-  --accent-foreground:    #635bff;
+  --ring:                 #0a7f86;
+  --accent:               #e6f5f7;
+  --accent-foreground:    #0a5e65;
 
   /* Component tokens */
   --card:                 #ffffff;
-  --card-foreground:      #0a2540;
+  --card-foreground:      #0f2e33;
   --popover:              #ffffff;
-  --popover-foreground:   #0a2540;
-  --secondary:            #f6f9fc;
-  --secondary-foreground: #425466;
-  --muted:                #f6f9fc;
+  --popover-foreground:   #0f2e33;
+  --secondary:            #f3fafb;
+  --secondary-foreground: #35545a;
+  --muted:                #f3fafb;
   --destructive:          #df1b41;
 
   /* Semantic */
-  --success:              #1a9c6e;
-  --success-subtle:       #ecfdf5;
+  --success:              #16835f;
+  --success-subtle:       #e8f8f1;
   --warning:              #d97706;
   --warning-subtle:       #fffbeb;
   --error:                #df1b41;
   --error-subtle:         #fff1f2;
 
-  /* Radius — Stripe is subtle */
+  /* Radius */
   --radius:               0.375rem;
 
-  /* Shadows — Stripe elevation system */
-  --shadow-xs:   0 1px 2px 0 rgb(10 37 64 / 0.04);
-  --shadow-sm:   0 1px 3px 0 rgb(10 37 64 / 0.06), 0 1px 2px -1px rgb(10 37 64 / 0.04);
-  --shadow-md:   0 4px 6px -1px rgb(10 37 64 / 0.06), 0 2px 4px -2px rgb(10 37 64 / 0.04);
-  --shadow-lg:   0 10px 15px -3px rgb(10 37 64 / 0.06), 0 4px 6px -4px rgb(10 37 64 / 0.04);
-  --shadow-xl:   0 20px 25px -5px rgb(10 37 64 / 0.08), 0 8px 10px -6px rgb(10 37 64 / 0.04);
+  /* Cool neutral elevation */
+  --shadow-xs:   0 1px 2px 0 rgb(15 46 51 / 0.04);
+  --shadow-sm:   0 1px 3px 0 rgb(15 46 51 / 0.06), 0 1px 2px -1px rgb(15 46 51 / 0.04);
+  --shadow-md:   0 4px 6px -1px rgb(15 46 51 / 0.06), 0 2px 4px -2px rgb(15 46 51 / 0.04);
+  --shadow-lg:   0 10px 15px -3px rgb(15 46 51 / 0.06), 0 4px 6px -4px rgb(15 46 51 / 0.04);
+  --shadow-xl:   0 20px 25px -5px rgb(15 46 51 / 0.08), 0 8px 10px -6px rgb(15 46 51 / 0.04);
 }
 
 @theme inline {
@@ -132,13 +133,13 @@
   .text-balance   { text-wrap: balance; }
   .text-pretty    { text-wrap: pretty; }
 
-  /* Stripe gradient mesh — used in hero section */
+  /* Brand mesh — used in hero section */
   .bg-stripe-mesh {
     background-color: #ffffff;
     background-image:
-      radial-gradient(ellipse 100% 70% at 50% -5%, #f0f0ff 0%, transparent 65%),
-      radial-gradient(ellipse 50% 50% at 85% 55%,  #eef2ff 0%, transparent 55%),
-      radial-gradient(ellipse 30% 40% at 10% 70%,  #f5f3ff 0%, transparent 55%);
+      radial-gradient(ellipse 100% 70% at 50% -5%, #e8f7f8 0%, transparent 65%),
+      radial-gradient(ellipse 50% 50% at 85% 55%,  #e2f3f5 0%, transparent 55%),
+      radial-gradient(ellipse 30% 40% at 10% 70%,  #f2fbfc 0%, transparent 55%);
   }
 
   /* Noise texture overlay — very subtle, adds depth */

@@ -1,6 +1,6 @@
-// Jumbo SafeBuy service catalogue
+// SafeBuy service catalogue
 // ---------------------------------------------------------------------------
-// Machine-filled from the Jumbo SafeBuy rate card.
+// Machine-filled from the SafeBuy rate card.
 //
 // Content that still needs to be authored by the team is marked with:
 //   TODO(seo)      — metadata, keywords, long-form content, FAQs
@@ -67,7 +67,7 @@ export interface Service {
   oftenBundledWith: string[];
 
   // ---- SEO scaffolding --------------------------------------------------
-  /** ≤60 chars. Falls back to `${name} in Bangalore | Jumbo SafeBuy` when empty. */
+  /** ≤60 chars. Falls back to `${name} in Bangalore | SafeBuy` when empty. */
   metaTitle: string;
   /** ≤155 chars. Falls back to shortDescription when empty. */
   metaDescription: string;

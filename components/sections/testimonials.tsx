@@ -34,7 +34,7 @@ export function TestimonialsSection() {
             Bangalore buyers, real transfers
           </h2>
           <p className="mt-4 text-[var(--text-secondary)] max-w-md mx-auto">
-            Actual buyers who transferred through Jumbo SafeBuy.
+            Actual buyers who transferred through SafeBuy.
           </p>
 
           {/* Aggregate rating */}

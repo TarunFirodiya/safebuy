@@ -12,7 +12,7 @@ export const faqs: FAQ[] = [
   {
     question: "How is my money protected during the transaction?",
     answer:
-      "All advance payments are routed through the Jumbo SafeBuy escrow account, powered by ICICI Bank. The token is held in escrow and released to the seller only after due diligence clears. Every payment milestone is tracked and logged, so you always know where your money is.",
+      "All advance payments are routed through the SafeBuy escrow account, powered by ICICI Bank. The token is held in escrow and released to the seller only after due diligence clears. Every payment milestone is tracked and logged, so you always know where your money is.",
   },
   {
     question: "What legal services do you actually offer?",
@@ -25,7 +25,7 @@ export const faqs: FAQ[] = [
       "Yes. Every service in our catalog is fixed-price and available standalone. Bundles exist because they're cheaper than buying the pieces individually and give you a single coordinator — but if you only need an encumbrance check or a khata transfer, you can book just that.",
   },
   {
-    question: "Can I use a home loan through Jumbo SafeBuy?",
+    question: "Can I use a home loan through SafeBuy?",
     answer:
       "Yes. You can access loan options from 90+ banks and NBFCs through our platform. We pre-negotiate on your behalf and surface the best terms for your profile. You can also choose to arrange a loan directly with your bank — we'll coordinate with them throughout the process.",
   },

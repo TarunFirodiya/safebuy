@@ -28,14 +28,14 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Jumbo SafeBuy",
-    default: "Jumbo SafeBuy — Buy your resale home without losing sleep",
+    template: "%s | SafeBuy",
+    default: "SafeBuy — Buy your resale home without losing sleep",
   },
   description:
     "Fixed-price legal diligence, escrow-protected payments, and title transfer for resale homes in Bangalore. 21 days, start to keys.",
   metadataBase: new URL("https://jumbosafebuy.in"),
   openGraph: {
-    siteName: "Jumbo SafeBuy",
+    siteName: "SafeBuy",
     locale: "en_IN",
     type: "website",
     images: [{ url: "/og-default.png", width: 1200, height: 630 }],
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
 const orgJsonLd: WithContext<Organization> = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Jumbo SafeBuy",
+  name: "SafeBuy",
   url: "https://jumbosafebuy.in",
-  logo: "https://jumbosafebuy.in/jumbo-safebuy-logo.png",
+  logo: "https://jumbosafebuy.in/safebuy-logo.png",
   areaServed: { "@type": "City", name: "Bangalore" },
   contactPoint: {
     "@type": "ContactPoint",
@@ -69,9 +69,9 @@ const orgJsonLd: WithContext<Organization> = {
 const localBusinessJsonLd: WithContext<LegalService> = {
   "@context": "https://schema.org",
   "@type": "LegalService",
-  name: "Jumbo SafeBuy",
+  name: "SafeBuy",
   url: "https://jumbosafebuy.in",
-  image: "https://jumbosafebuy.in/jumbo-safebuy-logo.png",
+  image: "https://jumbosafebuy.in/safebuy-logo.png",
   priceRange: "₹₹",
   areaServed: [
     { "@type": "City", name: "Bangalore" },

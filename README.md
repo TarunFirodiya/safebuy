@@ -1,4 +1,4 @@
-# Jumbo SafeBuy
+# SafeBuy
 
 The SafeBuy marketing site and checkout, running on Cloudflare Workers via OpenNext.
 

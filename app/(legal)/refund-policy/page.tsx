@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Refund & Cancellation Policy — Jumbo SafeBuy",
+  title: "Refund & Cancellation Policy — SafeBuy",
   description:
-    "When and how Jumbo SafeBuy processes refunds and cancellations.",
+    "When and how SafeBuy processes refunds and cancellations.",
   alternates: { canonical: "/refund-policy" },
 };
 

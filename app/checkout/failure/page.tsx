@@ -5,7 +5,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Payment failed — Jumbo SafeBuy",
+  title: "Payment failed — SafeBuy",
   robots: { index: false, follow: false },
 };
 

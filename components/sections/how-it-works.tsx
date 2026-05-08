@@ -33,7 +33,7 @@ const steps: Step[] = [
     label: "01",
     title: "Lock in the home",
     description:
-      "Confirm the terms and park your token in a Jumbo SafeBuy escrow account. Fully refundable until legal diligence clears — so your money moves only when the deal is safe.",
+      "Confirm the terms and park your token in a SafeBuy escrow account. Fully refundable until legal diligence clears — so your money moves only when the deal is safe.",
     Icon: HomeModernIcon,
     color: "var(--primary)",
     colorSubtle: "var(--accent)",

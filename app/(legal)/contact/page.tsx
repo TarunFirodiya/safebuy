@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us — Jumbo SafeBuy",
+  title: "Contact Us — SafeBuy",
   description:
-    "Get in touch with Jumbo SafeBuy — email, WhatsApp, and our registered address in Bengaluru.",
+    "Get in touch with SafeBuy — email, WhatsApp, and our registered address in Bengaluru.",
   alternates: { canonical: "/contact" },
 };
 

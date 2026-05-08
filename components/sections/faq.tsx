@@ -13,22 +13,22 @@ import { fadeInUp, transitions, VIEWPORT } from "@/lib/motion";
 
 const faqs = [
   {
-    question: "What is Jumbo SafeBuy and how can it help me?",
+    question: "What is SafeBuy and how can it help me?",
     answer: [
-      "Jumbo SafeBuy is your end-to-end partner for buying or selling a resale flat in Bangalore. Think of us as the one team that handles everything — legal checks, document drafting, bank coordination, registration, and the post-sale paperwork nobody tells you about.",
+      "SafeBuy is your end-to-end partner for buying or selling a resale flat in Bangalore. Think of us as the one team that handles everything — legal checks, document drafting, bank coordination, registration, and the post-sale paperwork nobody tells you about.",
       "Most buyers and sellers end up juggling lawyers, brokers, banks, and multiple offices on their own. We take that off your plate. You get one dedicated lawyer and one relationship manager who manages the entire journey, keeping you updated from start to finish — without you having to run around or chase people.",
       "We handle everything from legal verification and loan coordination to registration support and post-registration work like Khata, BESCOM, and tax transfers. The whole thing. From the comfort of your home.",
     ],
   },
   {
-    question: "What type of properties does Jumbo SafeBuy handle?",
+    question: "What type of properties does SafeBuy handle?",
     answer: [
       "We work only with residential resale and under-construction flats in Bangalore — no land, no commercial property.",
       "This focused approach means we've gotten genuinely good at one thing. Every resale apartment transaction we handle makes us better at the next one.",
     ],
   },
   {
-    question: "At what stage should I contact Jumbo SafeBuy?",
+    question: "At what stage should I contact SafeBuy?",
     answer: [
       "For buyers: ideally before you pay any token. That's when the most risk exists and the most can go wrong. But if you've already paid token, are mid-loan, or are even a week away from registration — reach out. We step in at any stage.",
       "For sellers: the earlier the better. If your Khata is outdated, your EC is missing, your tax records have errors, or your documents need corrections — it's much easier to fix these before you have a buyer waiting. Early preparation means faster closings and less stress when it matters.",
@@ -36,7 +36,7 @@ const faqs = [
     ],
   },
   {
-    question: "I'm buying a resale flat. What problem does Jumbo SafeBuy solve for me?",
+    question: "I'm buying a resale flat. What problem does SafeBuy solve for me?",
     answer: [
       "Buying a resale flat means a lot more than agreeing on a price. There's ownership history to verify, documents to check for hidden risks, token money to protect, bank paperwork to coordinate, agreements to draft, registration to manage, and post-sale transfers that nobody explains to you.",
       "Most people don't realise how many things can go wrong until something already has.",
@@ -45,7 +45,7 @@ const faqs = [
     ],
   },
   {
-    question: "I'm selling my flat. Why would I need Jumbo SafeBuy?",
+    question: "I'm selling my flat. Why would I need SafeBuy?",
     answer: [
       "Finding a buyer is only half the battle. The other half is being ready when a serious buyer is standing there.",
       "Serious buyers ask for documents — your Sale Deed, Khata, Encumbrance Certificate, tax receipts, loan closure papers. If anything is missing, outdated, or inconsistent, deals slow down, trust drops, and sometimes they fall apart entirely.",
@@ -55,11 +55,11 @@ const faqs = [
   },
   {
     question:
-      "I already have a lawyer / broker / bank loan. Why would I still need Jumbo SafeBuy?",
+      "I already have a lawyer / broker / bank loan. Why would I still need SafeBuy?",
     answer: [
       "Your lawyer reviews papers. Your broker finds you a buyer. Your bank processes the loan. But none of them own the whole journey.",
       "There's a gap in between — the follow-ups, the coordination, the post-registration steps, the accountability when something slips. That's where things break down and deals get delayed.",
-      "Jumbo SafeBuy fills that gap. One team that manages the entire process end-to-end, keeps all parties coordinated, and makes sure nothing falls through the cracks after registration.",
+      "SafeBuy fills that gap. One team that manages the entire process end-to-end, keeps all parties coordinated, and makes sure nothing falls through the cracks after registration.",
     ],
   },
   {
@@ -70,7 +70,7 @@ const faqs = [
     ],
   },
   {
-    question: "Why do customers trust Jumbo SafeBuy?",
+    question: "Why do customers trust SafeBuy?",
     answer: [
       "Because we combine legal expertise, hands-on execution, and end-to-end convenience — all with one team that actually manages the process, not just reviews it.",
       "Most service providers look at one piece of your transaction. We manage the whole story — from first conversation to the flat actually being in your name and all the paperwork updated.",
@@ -87,7 +87,7 @@ const faqs = [
     ],
   },
   {
-    question: "What is a Jumbo SafeBuy Escrow?",
+    question: "What is a SafeBuy Escrow?",
     answer: [
       "A way to protect your token money during a resale transaction.",
       "Instead of handing your token directly to the seller, it goes into a neutral escrow account. The money is released only after agreed conditions are met — like satisfactory legal due diligence or signing a term sheet.",

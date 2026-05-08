@@ -111,7 +111,7 @@ export function LeadModal({ open, onOpenChange }: LeadModalProps) {
               <button
                 type="submit"
                 className="w-full mt-1 inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground text-sm font-semibold h-10 px-4 transition-colors hover:bg-[var(--accent-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                style={{ "--accent-hover": "#4f46e5" } as React.CSSProperties}
+                style={{ "--accent-hover": "var(--primary-dark)" } as React.CSSProperties}
               >
                 Request a callback
               </button>

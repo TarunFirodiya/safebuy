@@ -554,7 +554,7 @@ function ScreenEscrow() {
                 letterSpacing: "0.01em",
               }}
             >
-              Jumbo SafeBuy · RBI-licensed partner
+              SafeBuy · RBI-licensed partner
             </span>
           </div>
         </div>
