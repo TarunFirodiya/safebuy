@@ -1,6 +1,9 @@
 // Augments the `CloudflareEnv` type that `@opennextjs/cloudflare` exposes
 // through `getCloudflareContext()`. Add every binding, secret, and plain var
 // declared in `wrangler.jsonc` or provisioned with `wrangler secret put`.
+// Wrangler’s optional peer — list explicitly so CI / `next build` see D1, KV, etc.
+
+/// <reference types="@cloudflare/workers-types" />
 
 import "@opennextjs/cloudflare";
 
