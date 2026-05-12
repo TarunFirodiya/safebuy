@@ -1051,7 +1051,7 @@ export const services: Service[] = [
 ];
 
 // ---------------------------------------------------------------------------
-// Bundles — SafeBuy Shield / Seal / Assure / Plus
+// Bundles — array order is price ascending on the home pricing grid (Shield → Assure → Seal → Plus).
 // ---------------------------------------------------------------------------
 
 // Helper to compute savings vs. sum of SKU list prices (used for display only).
@@ -1106,20 +1106,19 @@ export const bundles: Bundle[] = [
     lastUpdated: LAST_UPDATED,
   },
   {
-    slug: "safebuy-seal",
-    name: "SafeBuy Seal",
-    price: 19999,
+    slug: "safebuy-assure",
+    name: "SafeBuy Assure",
+    price: 27499,
     shortDescription:
-      "End-to-end registration support — agreement, deed, TDS, and stamp duty handled for you.",
+      "Post-registration formalities — Khata transfer, BESCOM, and tax name change.",
     longDescription:
-      "For buyers ready to execute the transaction. We draft the sale agreement and sale deed, assist with TDS (Form 26QB), and handle BBMP stamp duty payment — so registration goes through without surprises.",
-    serviceSlugOrder: sealSlugs,
-    savingsAmount: computeSavings(sealSlugs, 19999),
+      "For buyers who need assistance completing all post-registration formalities after purchase — ownership updates, utility transfers, and property tax record updates in the buyer's name.",
+    serviceSlugOrder: assureSlugs,
+    savingsAmount: computeSavings(assureSlugs, 27499),
     features: [
-      "Drafting of Sale Agreement",
-      "TDS Payment Assistance (Form 26QB)",
-      "Drafting of Sale Deed",
-      "BBMP Stamp Duty Payment Assistance",
+      "Khata Transfer (BBMP)",
+      "BESCOM Transfer",
+      "Property Tax Name Change",
     ],
     metaTitle: "",
     metaDescription: "",
@@ -1129,19 +1128,20 @@ export const bundles: Bundle[] = [
     lastUpdated: LAST_UPDATED,
   },
   {
-    slug: "safebuy-assure",
-    name: "SafeBuy Assure",
-    price: 29999,
+    slug: "safebuy-seal",
+    name: "SafeBuy Seal",
+    price: 34999,
     shortDescription:
-      "Post-registration formalities — Khata transfer, BESCOM, and tax name change.",
+      "End-to-end registration support — agreement, deed, TDS, and stamp duty handled for you.",
     longDescription:
-      "For buyers who need assistance completing all post-registration formalities after purchase — ownership updates, utility transfers, and property tax record updates in the buyer's name.",
-    serviceSlugOrder: assureSlugs,
-    savingsAmount: computeSavings(assureSlugs, 29999),
+      "For buyers ready to execute the transaction. We draft the sale agreement and sale deed, assist with TDS (Form 26QB), and handle BBMP stamp duty payment — so registration goes through without surprises.",
+    serviceSlugOrder: sealSlugs,
+    savingsAmount: computeSavings(sealSlugs, 34999),
     features: [
-      "Khata Transfer (BBMP)",
-      "BESCOM Transfer",
-      "Property Tax Name Change",
+      "Drafting of Sale Agreement",
+      "TDS Payment Assistance (Form 26QB)",
+      "Drafting of Sale Deed",
+      "BBMP Stamp Duty Payment Assistance",
     ],
     metaTitle: "",
     metaDescription: "",

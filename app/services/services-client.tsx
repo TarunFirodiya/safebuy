@@ -58,7 +58,7 @@ export function ServicesClient() {
               className="mt-6 inline-flex items-center gap-2 h-10 px-5 rounded-md border border-[var(--border)] bg-[var(--accent)] text-sm font-medium text-[var(--primary)] hover:bg-white transition-colors"
             >
               <RectangleGroupIcon className="w-4 h-4" />
-              Browse bundles — Shield / Seal / Assure / Plus
+              Browse bundles — Shield / Assure / Seal / Plus
               <ArrowRightIcon className="w-3.5 h-3.5" />
             </Link>
           </motion.div>
