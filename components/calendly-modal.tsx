@@ -11,9 +11,11 @@ import { CALENDLY_BOOKING_URL } from "@/lib/booking";
 interface CalendlyModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  /** Optional prefilled Calendly URL; defaults to the canonical link. */
+  url?: string;
 }
 
-export function CalendlyModal({ open, onOpenChange }: CalendlyModalProps) {
+export function CalendlyModal({ open, onOpenChange, url }: CalendlyModalProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
@@ -28,7 +30,7 @@ export function CalendlyModal({ open, onOpenChange }: CalendlyModalProps) {
         <div className="relative min-h-[min(560px,70vh)] w-full flex-1 bg-muted/30">
           <iframe
             title="Schedule a call — SafeBuy"
-            src={CALENDLY_BOOKING_URL}
+            src={url ?? CALENDLY_BOOKING_URL}
             className="absolute inset-0 h-full w-full border-0"
             loading="lazy"
           />

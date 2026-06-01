@@ -12,6 +12,9 @@ declare global {
     // ── D1 binding ───────────────────────────────────────────────────────
     DB: D1Database;
 
+    // ── R2 bucket (private) — onboarding document uploads ────────────────
+    DOCUMENTS: R2Bucket;
+
     // ── Public vars (wrangler.jsonc → vars) ──────────────────────────────
     NEXT_PUBLIC_SITE_URL: string;
     /** "test" | "live" — controls which Razorpay mode the app runs in. */

@@ -15,13 +15,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import {
+  addApplicationEvent,
   claimWebhookEvent,
+  getApplicationById,
   getDb,
   getOrderById,
   markOrderFailed,
   markOrderFulfilled,
   markOrderPaid,
   markWebhookEventProcessed,
+  setApplicationStatus,
   upsertPayment,
   type PaymentStatus,
 } from "@/lib/db";
@@ -294,6 +297,22 @@ async function fulfillOrder(
   // if (env.GETFORM_PAYMENT_ENDPOINT) { await pushToGetform(order, env); }
   // await createGstInvoice(order, env);
   void env; // suppress unused-arg lint until phase 2 wires these in
+
+  // Advance the linked onboarding application to `paid` so the guest tracker
+  // reflects the captured payment. Guarded by the fulfilled_at check above, so
+  // this fires exactly once per order.
+  if (order.application_id) {
+    const application = await getApplicationById(db, order.application_id);
+    if (application && application.status !== "paid") {
+      await setApplicationStatus(db, application.id, "paid");
+      await addApplicationEvent(db, {
+        applicationId: application.id,
+        type: "payment_captured",
+        message: "Payment received — your application is now being processed.",
+        metaJson: JSON.stringify({ orderId: order.id }),
+      });
+    }
+  }
 
   await markOrderFulfilled(db, order.id, Date.now());
 }

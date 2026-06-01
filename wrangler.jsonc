@@ -44,5 +44,17 @@
 			"database_id": "0d094286-02eb-46ee-92bd-0e4263ae703b",
 			"migrations_dir": "./migrations"
 		}
+	],
+	// Private R2 bucket for onboarding document uploads. Objects are served
+	// back only through token-scoped Worker routes — never made public.
+	// Create the buckets once with:
+	//   pnpm wrangler r2 bucket create safebuy-documents
+	//   pnpm wrangler r2 bucket create safebuy-documents-preview
+	"r2_buckets": [
+		{
+			"binding": "DOCUMENTS",
+			"bucket_name": "safebuy-documents",
+			"preview_bucket_name": "safebuy-documents-preview"
+		}
 	]
 }

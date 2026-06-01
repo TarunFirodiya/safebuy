@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { CheckCircleIcon, EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { getApplicationById, getDb, getOrderById } from "@/lib/db";
 
 export const metadata: Metadata = {
   title: "Payment successful — SafeBuy",
@@ -15,6 +17,19 @@ export default async function CheckoutSuccessPage({
   searchParams: Promise<{ order?: string }>;
 }) {
   const { order } = await searchParams;
+
+  // Application-linked orders belong on the guest tracker, which shows live
+  // status and next steps. Redirect there if we can resolve the application.
+  if (order) {
+    const db = await getDb();
+    const orderRow = await getOrderById(db, order);
+    if (orderRow?.application_id) {
+      const application = await getApplicationById(db, orderRow.application_id);
+      if (application) {
+        redirect(`/track/${application.access_token}?paid=1`);
+      }
+    }
+  }
 
   return (
     <>

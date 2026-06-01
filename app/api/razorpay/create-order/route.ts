@@ -19,7 +19,13 @@ import {
   validateCustomerInput,
   type SkuType,
 } from "@/lib/checkout";
-import { getDb, insertOrder, upsertCustomer } from "@/lib/db";
+import {
+  getApplicationById,
+  getDb,
+  insertOrder,
+  linkApplicationOrder,
+  upsertCustomer,
+} from "@/lib/db";
 import { createOrder as createRazorpayOrder } from "@/lib/razorpay";
 
 interface CreateOrderRequest {
@@ -30,6 +36,8 @@ interface CreateOrderRequest {
     email: string;
     phone: string;
   };
+  /** Optional: links the payment to an in-progress onboarding application. */
+  applicationId?: string;
 }
 
 interface CreateOrderResponse {
@@ -113,6 +121,21 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     );
   }
 
+  // ── Optional application link ─────────────────────────────────────────
+  // Only honour an application id that exists and matches the SKU being paid
+  // for, so a stray id can never redirect another customer's payment.
+  let applicationId: string | null = null;
+  if (typeof body.applicationId === "string" && body.applicationId.length > 0) {
+    const application = await getApplicationById(db, body.applicationId);
+    if (
+      application &&
+      application.sku_type === sku.type &&
+      application.sku_slug === sku.slug
+    ) {
+      applicationId = application.id;
+    }
+  }
+
   let razorpayOrder;
   try {
     razorpayOrder = await createRazorpayOrder(
@@ -127,6 +150,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
           customer_id: customerRow.id,
           customer_email: customerRow.email,
           customer_phone: customerRow.phone,
+          ...(applicationId ? { application_id: applicationId } : {}),
           env: env.RAZORPAY_ENV,
         },
       },
@@ -157,11 +181,15 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       discount_paise: 0,
       notes: JSON.stringify({
         razorpay_env: env.RAZORPAY_ENV,
-        source: "web-checkout",
+        source: applicationId ? "application" : "web-checkout",
       }),
       receipt,
+      application_id: applicationId,
       created_at: now,
     });
+    if (applicationId) {
+      await linkApplicationOrder(db, applicationId, razorpayOrder.id);
+    }
   } catch (e) {
     // Order already exists at Razorpay — we lose D1 state but the webhook
     // will reconcile. Log and continue.

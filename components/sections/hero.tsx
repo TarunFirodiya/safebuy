@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ShieldCheckIcon,
   BriefcaseIcon,
   CurrencyRupeeIcon,
+  ArrowRightIcon,
 } from "@heroicons/react/24/outline";
 import { CalendlyModal } from "@/components/calendly-modal";
 import { fadeInUp, staggerContainer, staggerItem, transitions, VIEWPORT } from "@/lib/motion";
@@ -85,10 +87,17 @@ export function HeroSection() {
               animate="visible"
               transition={{ ...transitions.fadeInUp, delay: 0.28 }}
             >
+              <Link
+                href="/start"
+                className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity shadow-sm"
+              >
+                Start your application
+                <ArrowRightIcon className="w-4 h-4" />
+              </Link>
               <button
                 type="button"
                 onClick={() => setCalendlyOpen(true)}
-                className="inline-flex items-center justify-center h-11 px-6 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity shadow-sm"
+                className="inline-flex items-center justify-center h-11 px-6 rounded-md border border-[var(--border)] bg-white text-foreground text-sm font-semibold hover:bg-[var(--surface)] transition-colors"
               >
                 Talk to an expert
               </button>

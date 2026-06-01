@@ -9,7 +9,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { getDb, getOrderById, markOrderPaid } from "@/lib/db";
+import { getApplicationById, getDb, getOrderById, markOrderPaid } from "@/lib/db";
 import { verifyCheckoutSignature } from "@/lib/razorpay";
 
 interface VerifyRequest {
@@ -80,9 +80,20 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
   await markOrderPaid(db, order.id, Date.now());
 
+  // Application-linked orders land on the guest tracker (authoritative status
+  // changes still flow through the webhook); standalone orders use the generic
+  // success page.
+  let redirect = `/checkout/success?order=${encodeURIComponent(order.id)}`;
+  if (order.application_id) {
+    const application = await getApplicationById(db, order.application_id);
+    if (application) {
+      redirect = `/track/${encodeURIComponent(application.access_token)}?paid=1`;
+    }
+  }
+
   return NextResponse.json({
     ok: true,
-    redirect: `/checkout/success?order=${encodeURIComponent(order.id)}`,
+    redirect,
     order: {
       id: order.id,
       skuName: order.sku_name,

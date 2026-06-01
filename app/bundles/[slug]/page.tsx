@@ -11,6 +11,7 @@ import {
   CheckCircleIcon,
   ClockIcon,
   ArrowLeftIcon,
+  ArrowRightIcon,
   RectangleGroupIcon,
   ShieldCheckIcon,
 } from "@heroicons/react/24/outline";
@@ -381,6 +382,13 @@ export default async function BundleDetailPage({
                   </p>
 
                   <div className="mt-6 space-y-3">
+                    <Link
+                      href={`/apply/new?type=bundle&slug=${bundle.slug}`}
+                      className="flex items-center justify-center gap-2 w-full h-11 rounded-md bg-[var(--primary)] text-white text-sm font-semibold hover:bg-[var(--primary-dark)] transition-colors"
+                    >
+                      Start application
+                      <ArrowRightIcon className="w-4 h-4" />
+                    </Link>
                     {isBundleBuyable(bundle) ? (
                       <BuyNowButton
                         skuType="bundle"
@@ -388,9 +396,10 @@ export default async function BundleDetailPage({
                         skuName={bundle.name}
                         amountRupees={bundle.price}
                         label="Book this bundle"
+                        variant="outline"
                       />
                     ) : null}
-                    <BookCalendlyButton className="flex items-center justify-center w-full h-10 rounded-md border border-[var(--border)] text-sm font-medium text-foreground hover:bg-[var(--surface)] transition-colors">
+                    <BookCalendlyButton className="flex items-center justify-center w-full h-10 rounded-md text-sm font-medium text-[var(--text-secondary)] hover:text-foreground transition-colors">
                       Talk to a SafeBuy advisor
                     </BookCalendlyButton>
                   </div>

@@ -474,6 +474,13 @@ export default async function ServiceDetailPage({
                   </div>
 
                   <div className="mt-6 space-y-3">
+                    <Link
+                      href={`/apply/new?type=service&slug=${service.slug}`}
+                      className="flex items-center justify-center gap-2 w-full h-11 rounded-md bg-[var(--primary)] text-white text-sm font-semibold hover:bg-[var(--primary-dark)] transition-colors"
+                    >
+                      Start application
+                      <ArrowRightIcon className="w-4 h-4" />
+                    </Link>
                     {isServiceBuyable(service) ? (
                       <>
                         <BuyNowButton
@@ -482,14 +489,15 @@ export default async function ServiceDetailPage({
                           skuName={service.name}
                           amountRupees={service.price}
                           label="Buy now"
+                          variant="outline"
                         />
-                        <BookCalendlyButton className="flex items-center justify-center w-full h-10 rounded-md border border-[var(--border)] text-sm font-medium text-foreground hover:bg-[var(--surface)] transition-colors">
+                        <BookCalendlyButton className="flex items-center justify-center w-full h-10 rounded-md text-sm font-medium text-[var(--text-secondary)] hover:text-foreground transition-colors">
                           Talk to an advisor first
                         </BookCalendlyButton>
                       </>
                     ) : (
                       <>
-                        <BookCalendlyButton className="flex items-center justify-center gap-2 w-full h-11 rounded-md bg-[var(--primary)] text-white text-sm font-semibold hover:bg-[var(--primary-dark)] transition-colors">
+                        <BookCalendlyButton className="flex items-center justify-center gap-2 w-full h-10 rounded-md border border-[var(--border)] text-sm font-medium text-foreground hover:bg-[var(--surface)] transition-colors">
                           Book a free call
                         </BookCalendlyButton>
                         <p className="text-center text-xs text-[var(--text-muted)]">

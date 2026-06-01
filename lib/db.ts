@@ -48,6 +48,7 @@ export interface OrderRow {
   discount_paise: number;
   notes: string | null;
   receipt: string;
+  application_id: string | null;
   fulfilled_at: number | null;
   created_at: number;
   paid_at: number | null;
@@ -122,6 +123,16 @@ export async function upsertCustomer(
   return { id, name, email, phone, created_at: now, updated_at: now };
 }
 
+export async function getCustomerById(
+  db: D1Database,
+  id: string,
+): Promise<CustomerRow | null> {
+  return await db
+    .prepare("SELECT * FROM customers WHERE id = ?1 LIMIT 1")
+    .bind(id)
+    .first<CustomerRow>();
+}
+
 // ──────────────────────────────────────────────────────────────────────────
 // Order helpers
 // ──────────────────────────────────────────────────────────────────────────
@@ -135,9 +146,9 @@ export async function insertOrder(
       `INSERT INTO orders
         (id, razorpay_order_id, customer_id, sku_type, sku_slug, sku_name,
          amount_paise, currency, status, coupon_code, discount_paise, notes,
-         receipt, created_at)
+         receipt, application_id, created_at)
        VALUES
-        (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14)`,
+        (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15)`,
     )
     .bind(
       row.id,
@@ -153,6 +164,7 @@ export async function insertOrder(
       row.discount_paise,
       row.notes,
       row.receipt,
+      row.application_id,
       row.created_at,
     )
     .run();
@@ -296,4 +308,331 @@ export async function markWebhookEventProcessed(
     )
     .bind(eventId, Date.now(), error ?? null)
     .run();
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// Applications (Atlys-style onboarding) — match migrations/0002_applications.sql
+// ──────────────────────────────────────────────────────────────────────────
+
+export type ApplicationStatus =
+  | "draft"
+  | "documents_pending"
+  | "documents_review"
+  | "payment_pending"
+  | "awaiting_consult"
+  | "paid"
+  | "in_progress"
+  | "delivered"
+  | "action_required"
+  | "cancelled";
+
+export interface ApplicationRow {
+  id: string;
+  access_token: string;
+  customer_id: string | null;
+  sku_type: "service" | "bundle";
+  sku_slug: string;
+  sku_name: string;
+  status: ApplicationStatus;
+  property_json: string | null;
+  journey_json: string | null;
+  order_id: string | null;
+  created_at: number;
+  updated_at: number;
+}
+
+export type DocumentUploadStatus = "pending" | "uploaded";
+export type DocumentReviewStatus = "pending" | "accepted" | "rejected";
+
+export interface ApplicationDocumentRow {
+  id: string;
+  application_id: string;
+  requirement_key: string;
+  requirement_label: string;
+  storage_key: string | null;
+  filename: string | null;
+  content_type: string | null;
+  size_bytes: number | null;
+  upload_status: DocumentUploadStatus;
+  review_status: DocumentReviewStatus;
+  reviewer_note: string | null;
+  created_at: number;
+  updated_at: number;
+}
+
+export interface ApplicationEventRow {
+  id: string;
+  application_id: string;
+  type: string;
+  message: string;
+  meta_json: string | null;
+  created_at: number;
+}
+
+export async function createApplication(
+  db: D1Database,
+  input: {
+    skuType: "service" | "bundle";
+    skuSlug: string;
+    skuName: string;
+    journeyJson?: string | null;
+    status?: ApplicationStatus;
+  },
+): Promise<ApplicationRow> {
+  const now = Date.now();
+  const id = `app_${crypto.randomUUID().replace(/-/g, "")}`;
+  const accessToken = crypto.randomUUID();
+  const status = input.status ?? "draft";
+
+  await db
+    .prepare(
+      `INSERT INTO applications
+        (id, access_token, sku_type, sku_slug, sku_name, status,
+         journey_json, created_at, updated_at)
+       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?8)`,
+    )
+    .bind(
+      id,
+      accessToken,
+      input.skuType,
+      input.skuSlug,
+      input.skuName,
+      status,
+      input.journeyJson ?? null,
+      now,
+    )
+    .run();
+
+  return {
+    id,
+    access_token: accessToken,
+    customer_id: null,
+    sku_type: input.skuType,
+    sku_slug: input.skuSlug,
+    sku_name: input.skuName,
+    status,
+    property_json: null,
+    journey_json: input.journeyJson ?? null,
+    order_id: null,
+    created_at: now,
+    updated_at: now,
+  };
+}
+
+export async function getApplicationById(
+  db: D1Database,
+  id: string,
+): Promise<ApplicationRow | null> {
+  return await db
+    .prepare("SELECT * FROM applications WHERE id = ?1 LIMIT 1")
+    .bind(id)
+    .first<ApplicationRow>();
+}
+
+export async function getApplicationByToken(
+  db: D1Database,
+  token: string,
+): Promise<ApplicationRow | null> {
+  return await db
+    .prepare("SELECT * FROM applications WHERE access_token = ?1 LIMIT 1")
+    .bind(token)
+    .first<ApplicationRow>();
+}
+
+export async function updateApplicationProperty(
+  db: D1Database,
+  id: string,
+  propertyJson: string,
+): Promise<void> {
+  await db
+    .prepare(
+      "UPDATE applications SET property_json = ?2, updated_at = ?3 WHERE id = ?1",
+    )
+    .bind(id, propertyJson, Date.now())
+    .run();
+}
+
+export async function attachCustomerToApplication(
+  db: D1Database,
+  id: string,
+  customerId: string,
+): Promise<void> {
+  await db
+    .prepare(
+      "UPDATE applications SET customer_id = ?2, updated_at = ?3 WHERE id = ?1",
+    )
+    .bind(id, customerId, Date.now())
+    .run();
+}
+
+export async function setApplicationStatus(
+  db: D1Database,
+  id: string,
+  status: ApplicationStatus,
+): Promise<void> {
+  await db
+    .prepare(
+      "UPDATE applications SET status = ?2, updated_at = ?3 WHERE id = ?1",
+    )
+    .bind(id, status, Date.now())
+    .run();
+}
+
+export async function linkApplicationOrder(
+  db: D1Database,
+  id: string,
+  orderId: string,
+): Promise<void> {
+  await db
+    .prepare(
+      "UPDATE applications SET order_id = ?2, updated_at = ?3 WHERE id = ?1",
+    )
+    .bind(id, orderId, Date.now())
+    .run();
+}
+
+/** Looks up the application linked to a paid order (used by the webhook). */
+export async function getApplicationByOrderId(
+  db: D1Database,
+  orderId: string,
+): Promise<ApplicationRow | null> {
+  return await db
+    .prepare("SELECT * FROM applications WHERE order_id = ?1 LIMIT 1")
+    .bind(orderId)
+    .first<ApplicationRow>();
+}
+
+// ── Documents ───────────────────────────────────────────────────────────────
+
+/**
+ * Seeds the document checklist for an application from a list of
+ * (key, label) requirements. Idempotent — existing rows are left untouched
+ * thanks to the unique (application_id, requirement_key) index.
+ */
+export async function seedApplicationDocuments(
+  db: D1Database,
+  applicationId: string,
+  requirements: { key: string; label: string }[],
+): Promise<void> {
+  if (requirements.length === 0) return;
+  const now = Date.now();
+  const statements = requirements.map((req) =>
+    db
+      .prepare(
+        `INSERT INTO application_documents
+          (id, application_id, requirement_key, requirement_label,
+           upload_status, review_status, created_at, updated_at)
+         VALUES (?1, ?2, ?3, ?4, 'pending', 'pending', ?5, ?5)
+         ON CONFLICT(application_id, requirement_key) DO NOTHING`,
+      )
+      .bind(
+        `doc_${crypto.randomUUID().replace(/-/g, "")}`,
+        applicationId,
+        req.key,
+        req.label,
+        now,
+      ),
+  );
+  await db.batch(statements);
+}
+
+export async function getApplicationDocuments(
+  db: D1Database,
+  applicationId: string,
+): Promise<ApplicationDocumentRow[]> {
+  const res = await db
+    .prepare(
+      "SELECT * FROM application_documents WHERE application_id = ?1 ORDER BY created_at",
+    )
+    .bind(applicationId)
+    .all<ApplicationDocumentRow>();
+  return res.results ?? [];
+}
+
+export async function recordDocumentUpload(
+  db: D1Database,
+  input: {
+    applicationId: string;
+    requirementKey: string;
+    storageKey: string;
+    filename: string;
+    contentType: string;
+    sizeBytes: number;
+  },
+): Promise<void> {
+  await db
+    .prepare(
+      `UPDATE application_documents
+         SET storage_key = ?3, filename = ?4, content_type = ?5,
+             size_bytes = ?6, upload_status = 'uploaded',
+             review_status = 'pending', reviewer_note = NULL, updated_at = ?7
+       WHERE application_id = ?1 AND requirement_key = ?2`,
+    )
+    .bind(
+      input.applicationId,
+      input.requirementKey,
+      input.storageKey,
+      input.filename,
+      input.contentType,
+      input.sizeBytes,
+      Date.now(),
+    )
+    .run();
+}
+
+export async function setDocumentReview(
+  db: D1Database,
+  documentId: string,
+  reviewStatus: DocumentReviewStatus,
+  note?: string,
+): Promise<void> {
+  await db
+    .prepare(
+      `UPDATE application_documents
+         SET review_status = ?2, reviewer_note = ?3, updated_at = ?4
+       WHERE id = ?1`,
+    )
+    .bind(documentId, reviewStatus, note ?? null, Date.now())
+    .run();
+}
+
+// ── Events ────────────────────────────────────────────────────────────────
+
+export async function addApplicationEvent(
+  db: D1Database,
+  input: {
+    applicationId: string;
+    type: string;
+    message: string;
+    metaJson?: string | null;
+  },
+): Promise<void> {
+  await db
+    .prepare(
+      `INSERT INTO application_events
+        (id, application_id, type, message, meta_json, created_at)
+       VALUES (?1, ?2, ?3, ?4, ?5, ?6)`,
+    )
+    .bind(
+      `evt_${crypto.randomUUID().replace(/-/g, "")}`,
+      input.applicationId,
+      input.type,
+      input.message,
+      input.metaJson ?? null,
+      Date.now(),
+    )
+    .run();
+}
+
+export async function getApplicationEvents(
+  db: D1Database,
+  applicationId: string,
+): Promise<ApplicationEventRow[]> {
+  const res = await db
+    .prepare(
+      "SELECT * FROM application_events WHERE application_id = ?1 ORDER BY created_at",
+    )
+    .bind(applicationId)
+    .all<ApplicationEventRow>();
+  return res.results ?? [];
 }

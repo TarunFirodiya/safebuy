@@ -3,7 +3,11 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRightIcon, RectangleGroupIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowRightIcon,
+  RectangleGroupIcon,
+  SparklesIcon,
+} from "@heroicons/react/24/outline";
 import {
   services,
   categoryLabels,
@@ -53,14 +57,24 @@ export function ServicesClient() {
               combines the services most buyers need.
             </p>
 
-            <Link
-              href="/#pricing"
-              className="mt-6 inline-flex items-center gap-2 h-10 px-5 rounded-md border border-[var(--border)] bg-[var(--accent)] text-sm font-medium text-[var(--primary)] hover:bg-white transition-colors"
-            >
-              <RectangleGroupIcon className="w-4 h-4" />
-              Browse bundles — Shield / Assure / Seal / Plus
-              <ArrowRightIcon className="w-3.5 h-3.5" />
-            </Link>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/start"
+                className="inline-flex items-center gap-2 h-10 px-5 rounded-md bg-[var(--primary)] text-sm font-semibold text-white hover:bg-[var(--primary-dark)] transition-colors"
+              >
+                <SparklesIcon className="w-4 h-4" />
+                Not sure? Take the 2-minute quiz
+                <ArrowRightIcon className="w-3.5 h-3.5" />
+              </Link>
+              <Link
+                href="/#pricing"
+                className="inline-flex items-center gap-2 h-10 px-5 rounded-md border border-[var(--border)] bg-[var(--accent)] text-sm font-medium text-[var(--primary)] hover:bg-white transition-colors"
+              >
+                <RectangleGroupIcon className="w-4 h-4" />
+                Browse bundles — Shield / Assure / Seal / Plus
+                <ArrowRightIcon className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </motion.div>
 
           <div className="mt-8 flex flex-wrap gap-2">

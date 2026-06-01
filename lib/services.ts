@@ -136,8 +136,18 @@ export const services: Service[] = [
     result:
       "A verified Encumbrance Certificate sourced through official channels, ensuring accuracy and reliability.",
     requirements: ["Sale Deed", "Aadhaar Card"],
-    steps: [], // TODO(content)
-    notIncluded: [], // TODO(content)
+    steps: [
+      "Share your Sale Deed and ID — we confirm the property and survey numbers.",
+      "We file the EC application with the jurisdictional sub-registrar's office.",
+      "The sub-registrar compiles the encumbrance record for your 10- or 20-year window.",
+      "Our team reviews the certificate for completeness and flags any gaps.",
+      "You receive your verified Encumbrance Certificate, ready for banks or buyers.",
+    ],
+    notIncluded: [
+      "Legal opinion on the title (see Title Verification)",
+      "Clearing or removing existing loans/encumbrances",
+      "Records outside the requested 10- or 20-year period",
+    ],
     oftenBundledWith: ["title-verification", "e-khata-ec-update"],
     metaTitle: "", // TODO(seo)
     metaDescription: "", // TODO(seo)
@@ -210,8 +220,17 @@ export const services: Service[] = [
       "Property Tax Paid Receipts",
       "NOCs",
     ],
-    steps: [],
-    notIncluded: [],
+    steps: [
+      "Upload your property documents — Sale Deed, EC, Khata, tax receipts and approvals.",
+      "Our empanelled lawyers trace the chain of title across previous owners.",
+      "We check for encumbrances, pending litigation, and approval or zoning issues.",
+      "You receive a signed legal opinion on the law firm's letterhead with a clear verdict.",
+    ],
+    notIncluded: [
+      "Physical site survey or measurement",
+      "Registration of any document",
+      "Litigation or dispute resolution if defects are found",
+    ],
     oftenBundledWith: ["encumbrance-certificate", "sale-agreement-review"],
     metaTitle: "",
     metaDescription: "",
@@ -292,8 +311,18 @@ export const services: Service[] = [
       "Khata Certificate",
       "Copy of Sale Agreement",
     ],
-    steps: [],
-    notIncluded: [],
+    steps: [
+      "Share buyer and seller details with your supporting documents.",
+      "We draft the Sale Deed and compute stamp duty and registration charges.",
+      "Both parties review and approve the final draft.",
+      "We complete e-stamping and book your sub-registrar appointment.",
+      "Registration is completed and you receive the registered Sale Deed.",
+    ],
+    notIncluded: [
+      "Government stamp duty and registration fees (paid to the state)",
+      "TDS filing on the purchase (see TDS / Form 26QB)",
+      "Title due diligence (see Title Verification)",
+    ],
     oftenBundledWith: ["agreement-for-sale", "e-stamping", "tds-filing-26qb"],
     metaTitle: "",
     metaDescription: "",

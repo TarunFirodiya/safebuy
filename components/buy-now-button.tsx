@@ -33,6 +33,10 @@ interface BuyNowButtonProps {
   label?: string;
   /** Hides the trailing arrow on the button. */
   hideArrow?: boolean;
+  /** Links the payment to an onboarding application (ties order → tracker). */
+  applicationId?: string;
+  /** Prefills the contact modal from a known customer. */
+  prefill?: { name?: string; email?: string; phone?: string };
 }
 
 interface CreateOrderResponse {
@@ -107,10 +111,16 @@ export function BuyNowButton({
   className,
   label = "Buy now",
   hideArrow = false,
+  applicationId,
+  prefill,
 }: BuyNowButtonProps) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", phone: "" });
+  const [form, setForm] = useState({
+    name: prefill?.name ?? "",
+    email: prefill?.email ?? "",
+    phone: prefill?.phone ?? "",
+  });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -136,6 +146,7 @@ export function BuyNowButton({
             skuType,
             skuSlug,
             customer: form,
+            applicationId,
           }),
         });
 
@@ -175,6 +186,7 @@ export function BuyNowButton({
           notes: {
             sku_type: skuType,
             sku_slug: skuSlug,
+            ...(applicationId ? { application_id: applicationId } : {}),
           },
           theme: { color: "#0B6E4F" },
           handler: async (response) => {
@@ -224,7 +236,7 @@ export function BuyNowButton({
         setSubmitting(false);
       }
     },
-    [form, router, skuSlug, skuType],
+    [applicationId, form, router, skuSlug, skuType],
   );
 
   return (
