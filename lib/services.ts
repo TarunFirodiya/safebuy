@@ -1242,21 +1242,18 @@ export function formatServicePrice(service: Service): string {
 
 /**
  * Default rule for whether a service can be purchased directly via Razorpay
- * checkout without a discovery call. Can be overridden per-SKU by setting
- * `buyable` explicitly in the catalogue entry.
+ * checkout. Can be overridden per-SKU by setting `buyable` explicitly in the
+ * catalogue entry.
  *
- * Rule: price ≤ ₹10,000 AND pricing is a fixed single amount (no "Per hour"
- * note, no alternate tiers). Above that, customers go through a consult.
+ * Rule: any SKU with a real price is payable online. There is deliberately no
+ * price ceiling — a high price is not a reason to make someone book a call.
+ * Tiered SKUs are payable too: the selected tier is carried through checkout
+ * and re-validated server-side in `resolveSku`, so the amount charged always
+ * matches the amount shown.
  */
-const BUYABLE_PRICE_CEILING = 10_000;
-
 export function isServiceBuyable(service: Service): boolean {
   if (typeof service.buyable === "boolean") return service.buyable;
-  if (service.priceNote) return false;
-  if (service.priceAlternates && service.priceAlternates.length > 0) {
-    return false;
-  }
-  return service.price > 0 && service.price <= BUYABLE_PRICE_CEILING;
+  return service.price > 0;
 }
 
 export function isBundleBuyable(bundle: Bundle): boolean {

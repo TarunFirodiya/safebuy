@@ -17,6 +17,8 @@ export interface ResolvedSku {
   type: SkuType;
   slug: string;
   name: string;
+  /** Selected pricing tier label, when the SKU has `priceAlternates`. */
+  priceTier?: string;
   amountPaise: number;
   /** Reference to the catalogue entry, in case we need more fields later. */
   source: Service | Bundle;
@@ -27,7 +29,11 @@ export interface ResolvedSku {
  * pricing. Throws if the SKU doesn't exist or isn't currently buyable so the
  * caller can surface a 400 without leaking catalogue details.
  */
-export function resolveSku(type: SkuType, slug: string): ResolvedSku {
+export function resolveSku(
+  type: SkuType,
+  slug: string,
+  priceTier?: string,
+): ResolvedSku {
   if (type === "service") {
     const svc = services.find((s) => s.slug === slug);
     if (!svc) throw new SkuLookupError(`Unknown service: ${slug}`);
@@ -36,11 +42,13 @@ export function resolveSku(type: SkuType, slug: string): ResolvedSku {
         `${svc.name} is not currently available for online checkout.`,
       );
     }
+    const { price, tier } = resolveServicePrice(svc, priceTier);
     return {
       type: "service",
       slug: svc.slug,
-      name: svc.name,
-      amountPaise: rupeesToPaise(svc.price),
+      name: tier ? `${svc.name} — ${tier}` : svc.name,
+      priceTier: tier,
+      amountPaise: rupeesToPaise(price),
       source: svc,
     };
   }
@@ -59,6 +67,40 @@ export function resolveSku(type: SkuType, slug: string): ResolvedSku {
     amountPaise: rupeesToPaise(bundle.price),
     source: bundle,
   };
+}
+
+/**
+ * Prices a service from its selected tier. The client sends a tier *label*,
+ * never an amount, and the label is matched against the catalogue here — so a
+ * tampered or stale request cannot set its own price.
+ *
+ * A tiered SKU requires a tier: defaulting to the base price would silently
+ * undercharge anyone who picked a more expensive option.
+ */
+function resolveServicePrice(
+  svc: Service,
+  priceTier?: string,
+): { price: number; tier?: string } {
+  const alternates = svc.priceAlternates ?? [];
+
+  if (alternates.length === 0) {
+    if (priceTier) {
+      throw new SkuLookupError(`${svc.name} has no pricing options to choose.`);
+    }
+    return { price: svc.price };
+  }
+
+  if (!priceTier) {
+    throw new SkuLookupError(`Please choose a pricing option for ${svc.name}.`);
+  }
+
+  const match = alternates.find((a) => a.label === priceTier);
+  if (!match) {
+    throw new SkuLookupError(
+      `"${priceTier}" is not a valid pricing option for ${svc.name}.`,
+    );
+  }
+  return { price: match.price, tier: match.label };
 }
 
 export class SkuLookupError extends Error {

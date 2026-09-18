@@ -30,7 +30,7 @@ import {
   isServiceBuyable,
 } from "@/lib/services";
 import { formatINR } from "@/lib/utils";
-import { PriceBlock } from "./price-block";
+import { PurchasePanel } from "./purchase-panel";
 import { FaqAccordion } from "./faq-accordion";
 
 const SITE_URL = "https://jumbosafebuy.in";
@@ -462,65 +462,7 @@ export default async function ServiceDetailPage({
             {/* Sticky sidebar */}
             <div className="lg:col-span-1">
               <div className="sticky top-24">
-                <div
-                  className="rounded-xl border border-[var(--border)] bg-white p-6"
-                  style={{ boxShadow: "var(--shadow-md)" }}
-                >
-                  <PriceBlock service={service} />
-
-                  <div className="mt-4 flex items-center gap-2 text-xs text-[var(--text-muted)]">
-                    <ClockIcon className="w-3.5 h-3.5 shrink-0" />
-                    Delivery in {service.deliveryTime}
-                  </div>
-
-                  <div className="mt-6 space-y-3">
-                    {isServiceBuyable(service) ? (
-                      <>
-                        <BuyNowButton
-                          skuType="service"
-                          skuSlug={service.slug}
-                          skuName={service.name}
-                          amountRupees={service.price}
-                          label="Pay now"
-                          variant="primary"
-                        />
-                        <BookCalendlyButton className="flex items-center justify-center w-full h-10 rounded-md text-sm font-medium text-[var(--text-secondary)] hover:text-foreground transition-colors">
-                          Talk to an advisor first
-                        </BookCalendlyButton>
-                      </>
-                    ) : (
-                      <>
-                        <BookCalendlyButton className="flex items-center justify-center gap-2 w-full h-10 rounded-md border border-[var(--border)] text-sm font-medium text-foreground hover:bg-[var(--surface)] transition-colors">
-                          Book a free call
-                        </BookCalendlyButton>
-                        <p className="text-center text-xs text-[var(--text-muted)]">
-                          Scope-dependent — we'll confirm price and timeline on the call, then send a payment link.
-                        </p>
-                      </>
-                    )}
-                  </div>
-
-                  <div className="mt-6 pt-5 border-t border-[var(--border)] space-y-2">
-                    <div className="flex items-start gap-2.5">
-                      <CheckCircleIcon className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
-                      <span className="text-xs text-[var(--text-secondary)]">
-                        Fixed price guaranteed — no hourly billing
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-2.5">
-                      <CheckCircleIcon className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
-                      <span className="text-xs text-[var(--text-secondary)]">
-                        ICICI Bank escrow-protected payments
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-2.5">
-                      <CheckCircleIcon className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
-                      <span className="text-xs text-[var(--text-secondary)]">
-                        Result delivered in {service.deliveryTime}
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                <PurchasePanel service={service} />
 
                 <p className="mt-4 text-center text-xs text-[var(--text-muted)]">
                   Want more coverage?{" "}
