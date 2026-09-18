@@ -855,7 +855,7 @@ export const services: Service[] = [
   },
   {
     slug: "e-khata-registration",
-    name: "E-Khata Registration (including LE)",
+    name: "e-Khata w/ Document Assistance",
     price: 24999,
     deliveryTime: "30 days",
     categories: ["before-buying", "for-owners"],
