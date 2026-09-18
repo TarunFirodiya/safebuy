@@ -33,6 +33,8 @@ interface BuyNowButtonProps {
   label?: string;
   /** Hides the trailing arrow on the button. */
   hideArrow?: boolean;
+  /** Selected pricing tier label for SKUs with `priceAlternates`. */
+  priceTier?: string;
   /** Links the payment to an onboarding application (ties order → tracker). */
   applicationId?: string;
   /** Prefills the contact modal from a known customer. */
@@ -111,6 +113,7 @@ export function BuyNowButton({
   className,
   label = "Pay now",
   hideArrow = false,
+  priceTier,
   applicationId,
   prefill,
 }: BuyNowButtonProps) {
@@ -145,6 +148,7 @@ export function BuyNowButton({
           body: JSON.stringify({
             skuType,
             skuSlug,
+            priceTier,
             customer: form,
             applicationId,
           }),
@@ -186,6 +190,7 @@ export function BuyNowButton({
           notes: {
             sku_type: skuType,
             sku_slug: skuSlug,
+            ...(priceTier ? { price_tier: priceTier } : {}),
             ...(applicationId ? { application_id: applicationId } : {}),
           },
           theme: { color: "#0B6E4F" },
@@ -236,7 +241,7 @@ export function BuyNowButton({
         setSubmitting(false);
       }
     },
-    [applicationId, form, router, skuSlug, skuType],
+    [applicationId, form, priceTier, router, skuSlug, skuType],
   );
 
   return (

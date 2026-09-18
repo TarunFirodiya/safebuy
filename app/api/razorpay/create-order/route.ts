@@ -31,6 +31,7 @@ import { createOrder as createRazorpayOrder } from "@/lib/razorpay";
 interface CreateOrderRequest {
   skuType: SkuType;
   skuSlug: string;
+  priceTier?: string;
   customer: {
     name: string;
     email: string;
@@ -84,7 +85,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     if (typeof body.skuSlug !== "string" || body.skuSlug.length === 0) {
       throw new SkuLookupError("Missing SKU slug.");
     }
-    sku = resolveSku(body.skuType, body.skuSlug);
+    if (body.priceTier !== undefined && typeof body.priceTier !== "string") {
+      throw new SkuLookupError("Invalid pricing option.");
+    }
+    sku = resolveSku(body.skuType, body.skuSlug, body.priceTier);
   } catch (e) {
     const message =
       e instanceof SkuLookupError
