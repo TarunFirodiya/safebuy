@@ -61,7 +61,7 @@ export async function generateMetadata({
     alternates: { canonical: `/bundles/${slug}` },
     robots: { index: true, follow: true },
     openGraph: {
-      title: `${bundle.name} | SafeBuy`,
+      title: `${bundle.name} | Jumbo SafeBuy`,
       description,
       url: `/bundles/${slug}`,
       type: "website",
@@ -90,7 +90,7 @@ export default async function BundleDetailPage({
     description: bundle.longDescription,
     provider: {
       "@type": "Organization",
-      name: "SafeBuy",
+      name: "Jumbo SafeBuy",
       url: SITE_URL,
     },
     areaServed: [

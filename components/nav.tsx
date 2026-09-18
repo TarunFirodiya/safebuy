@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { LeadModal } from "@/components/lead-modal";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "Features",       href: "/#features" },
@@ -27,15 +28,18 @@ export function Nav() {
             <div className="flex items-center justify-between h-16">
 
               {/* Logo */}
-              <Link href="/" className="flex items-center shrink-0">
+              <Link href="/" className="flex items-center gap-2.5 shrink-0">
                 <Image
-                  src="/safebuy-logo.png"
-                  alt="SafeBuy"
-                  width={784}
-                  height={348}
-                  className="h-10 w-auto max-w-[210px] sm:h-11 sm:max-w-[260px]"
+                  src="/jumbo-safebuy-logo.png"
+                  alt="Jumbo SafeBuy"
+                  width={32}
+                  height={32}
+                  className="h-8 w-auto"
                   priority
                 />
+                <span className="font-semibold text-base text-foreground tracking-tight">
+                  Jumbo SafeBuy
+                </span>
               </Link>
 
               {/* Desktop nav */}
@@ -55,16 +59,10 @@ export function Nav() {
               <div className="hidden lg:flex items-center gap-3">
                 <button
                   onClick={() => setLeadOpen(true)}
-                  className="inline-flex items-center justify-center h-9 px-4 rounded-md border border-[var(--border)] text-foreground text-sm font-semibold hover:bg-[var(--surface)] transition-colors"
+                  className="inline-flex items-center justify-center h-9 px-4 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
                 >
                   Talk to an expert
                 </button>
-                <Link
-                  href="/start"
-                  className="inline-flex items-center justify-center h-9 px-4 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
-                >
-                  Get started
-                </Link>
               </div>
 
               {/* Mobile hamburger */}
@@ -98,19 +96,12 @@ export function Nav() {
                   ))}
                 </ul>
                 <div className="flex flex-col gap-2 pt-2 border-t border-[var(--border)]">
-                  <Link
-                    href="/start"
-                    onClick={() => setMenuOpen(false)}
-                    className="w-full py-2.5 text-center text-sm font-semibold bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-opacity"
-                  >
-                    Get started
-                  </Link>
                   <button
                     onClick={() => {
                       setMenuOpen(false);
                       setLeadOpen(true);
                     }}
-                    className="w-full py-2.5 text-sm font-semibold border border-[var(--border)] text-foreground rounded-md hover:bg-[var(--surface)] transition-colors"
+                    className="w-full py-2.5 text-sm font-semibold bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-opacity"
                   >
                     Talk to an expert
                   </button>

@@ -65,7 +65,7 @@ export async function generateMetadata({
     alternates: { canonical: `/services/${slug}` },
     robots: { index: true, follow: true },
     openGraph: {
-      title: `${service.name} | SafeBuy`,
+      title: `${service.name} | Jumbo SafeBuy`,
       description,
       url: `/services/${slug}`,
       type: "website",
@@ -102,7 +102,7 @@ export default async function ServiceDetailPage({
     description: longForm.overview || service.shortDescription,
     provider: {
       "@type": "Organization",
-      name: "SafeBuy",
+      name: "Jumbo SafeBuy",
       url: SITE_URL,
     },
     areaServed: [

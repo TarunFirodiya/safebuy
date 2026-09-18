@@ -175,7 +175,7 @@ export function BuyNowButton({
           key: payload.razorpayKeyId,
           amount: payload.amountPaise,
           currency: payload.currency,
-          name: "SafeBuy",
+          name: "Jumbo SafeBuy",
           description: payload.skuName,
           order_id: payload.razorpayOrderId,
           prefill: {

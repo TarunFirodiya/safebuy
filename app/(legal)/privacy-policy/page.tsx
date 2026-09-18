@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — SafeBuy",
+  title: "Privacy Policy — Jumbo SafeBuy",
   description:
-    "How SafeBuy collects, uses, and protects your personal information.",
+    "How Jumbo SafeBuy collects, uses, and protects your personal information.",
   alternates: { canonical: "/privacy-policy" },
 };
 
@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
 
       <p>
         This Privacy Policy explains how NoBrokerage Homes Private Limited
-        ("<strong>SafeBuy</strong>", "<strong>we</strong>") collects,
+        ("<strong>Jumbo SafeBuy</strong>", "<strong>we</strong>") collects,
         uses, shares, and protects your personal information when you use{" "}
         <a href="https://safebuy.jumbohomes.in">safebuy.jumbohomes.in</a>{" "}
         ("<strong>Platform</strong>") or engage our services. We are
