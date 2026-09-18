@@ -29,7 +29,7 @@ export function CalendlyModal({ open, onOpenChange, url }: CalendlyModalProps) {
         </DialogHeader>
         <div className="relative min-h-[min(560px,70vh)] w-full flex-1 bg-muted/30">
           <iframe
-            title="Schedule a call — SafeBuy"
+            title="Schedule a call — Jumbo SafeBuy"
             src={url ?? CALENDLY_BOOKING_URL}
             className="absolute inset-0 h-full w-full border-0"
             loading="lazy"

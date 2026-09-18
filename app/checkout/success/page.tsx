@@ -7,7 +7,7 @@ import { Footer } from "@/components/footer";
 import { getApplicationById, getDb, getOrderById } from "@/lib/db";
 
 export const metadata: Metadata = {
-  title: "Payment successful — SafeBuy",
+  title: "Payment successful — Jumbo SafeBuy",
   robots: { index: false, follow: false },
 };
 

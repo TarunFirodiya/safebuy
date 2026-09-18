@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Service Delivery Policy — SafeBuy",
+  title: "Service Delivery Policy — Jumbo SafeBuy",
   description:
-    "How SafeBuy delivers services and documents after a successful payment.",
+    "How Jumbo SafeBuy delivers services and documents after a successful payment.",
   alternates: { canonical: "/shipping-policy" },
 };
 
@@ -16,7 +16,7 @@ export default function ShippingPolicyPage() {
       <p className="last-updated">Last updated: {LAST_UPDATED}</p>
 
       <p>
-        SafeBuy offers professional property-related services. We do
+        Jumbo SafeBuy offers professional property-related services. We do
         not ship physical goods — all deliverables are{" "}
         <strong>digital documents</strong> (PDFs, scanned copies,
         government-issued certificates in electronic form) or completed
