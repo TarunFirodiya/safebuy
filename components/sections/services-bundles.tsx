@@ -130,7 +130,7 @@ function BundleCard({ bundle, delay = 0 }: { bundle: Bundle; delay?: number }) {
               skuSlug={bundle.slug}
               skuName={bundle.name}
               amountRupees={bundle.price}
-              label="Book now"
+              label="Pay now"
               variant={bundle.badge ? "primary" : "outline"}
             />
           ) : (

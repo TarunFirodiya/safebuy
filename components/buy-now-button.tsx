@@ -29,7 +29,7 @@ interface BuyNowButtonProps {
   variant?: "primary" | "outline";
   /** Optional classname override for the trigger button. */
   className?: string;
-  /** Label shown on the trigger. Defaults to "Buy now". */
+  /** Label shown on the trigger. Defaults to "Pay now". */
   label?: string;
   /** Hides the trailing arrow on the button. */
   hideArrow?: boolean;
@@ -109,7 +109,7 @@ export function BuyNowButton({
   amountRupees,
   variant = "primary",
   className,
-  label = "Buy now",
+  label = "Pay now",
   hideArrow = false,
   applicationId,
   prefill,

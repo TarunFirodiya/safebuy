@@ -115,8 +115,8 @@ export default async function BundleDetailPage({
       {
         "@type": "ListItem",
         position: 2,
-        name: "Bundles",
-        item: `${SITE_URL}/#pricing`,
+        name: "Services",
+        item: `${SITE_URL}/services`,
       },
       {
         "@type": "ListItem",
@@ -172,10 +172,10 @@ export default async function BundleDetailPage({
             </Link>
             <span>/</span>
             <Link
-              href="/#pricing"
+              href="/services"
               className="hover:text-foreground transition-colors"
             >
-              Bundles
+              Services
             </Link>
             <span>/</span>
             <span className="text-foreground font-medium">{bundle.name}</span>
@@ -187,11 +187,11 @@ export default async function BundleDetailPage({
             {/* Main content */}
             <div className="lg:col-span-2">
               <Link
-                href="/#pricing"
+                href="/services"
                 className="inline-flex items-center gap-1.5 text-sm text-[var(--text-secondary)] hover:text-foreground transition-colors mb-8 group"
               >
                 <ArrowLeftIcon className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
-                All bundles
+                All services
               </Link>
 
               {/* Badge + title */}
@@ -365,7 +365,6 @@ export default async function BundleDetailPage({
                   </p>
                   <p
                     className="text-4xl font-bold text-foreground tabular-nums"
-                    style={{ fontFamily: "var(--font-mono)" }}
                   >
                     {formatINR(bundle.price)}
                   </p>
@@ -382,21 +381,14 @@ export default async function BundleDetailPage({
                   </p>
 
                   <div className="mt-6 space-y-3">
-                    <Link
-                      href={`/apply/new?type=bundle&slug=${bundle.slug}`}
-                      className="flex items-center justify-center gap-2 w-full h-11 rounded-md bg-[var(--primary)] text-white text-sm font-semibold hover:bg-[var(--primary-dark)] transition-colors"
-                    >
-                      Start application
-                      <ArrowRightIcon className="w-4 h-4" />
-                    </Link>
                     {isBundleBuyable(bundle) ? (
                       <BuyNowButton
                         skuType="bundle"
                         skuSlug={bundle.slug}
                         skuName={bundle.name}
                         amountRupees={bundle.price}
-                        label="Book this bundle"
-                        variant="outline"
+                        label="Pay now"
+                        variant="primary"
                       />
                     ) : null}
                     <BookCalendlyButton className="flex items-center justify-center w-full h-10 rounded-md text-sm font-medium text-[var(--text-secondary)] hover:text-foreground transition-colors">

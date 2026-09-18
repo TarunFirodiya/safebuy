@@ -4,58 +4,59 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ── Stripe-inspired design tokens ────────────────────────────────────────── */
+/* ── Monotone design tokens ───────────────────────────────────────────────── */
 :root {
   /* Surfaces */
   --background:           #ffffff;
-  --surface:              #f6f9fc;
+  --surface:              #fafafa;
   --surface-raised:       #ffffff;
 
   /* Borders */
-  --border:               #e6ebf1;
-  --border-strong:        #c4cdd6;
-  --input:                #e6ebf1;
+  --border:               #e5e5e5;
+  --border-strong:        #d4d4d4;
+  --input:                #e5e5e5;
 
   /* Text */
-  --foreground:           #0a2540;
-  --text-secondary:       #425466;
-  --text-muted:           #697386;
-  --muted-foreground:     #697386;
+  --foreground:           #0a0a0a;
+  --text-secondary:       #525252;
+  --text-muted:           #737373;
+  --muted-foreground:     #737373;
 
-  /* Brand accent — Stripe indigo */
-  --primary:              #635bff;
+  /* Brand accent — near-black, monotone */
+  --primary:              #171717;
+  --primary-dark:         #000000;
   --primary-foreground:   #ffffff;
-  --ring:                 #635bff;
-  --accent:               #eef2ff;
-  --accent-foreground:    #635bff;
+  --ring:                 #171717;
+  --accent:               #f5f5f5;
+  --accent-foreground:    #171717;
 
   /* Component tokens */
   --card:                 #ffffff;
-  --card-foreground:      #0a2540;
+  --card-foreground:      #0a0a0a;
   --popover:              #ffffff;
-  --popover-foreground:   #0a2540;
-  --secondary:            #f6f9fc;
-  --secondary-foreground: #425466;
-  --muted:                #f6f9fc;
-  --destructive:          #df1b41;
+  --popover-foreground:   #0a0a0a;
+  --secondary:            #fafafa;
+  --secondary-foreground: #525252;
+  --muted:                #fafafa;
+  --destructive:          #dc2626;
 
-  /* Semantic */
-  --success:              #1a9c6e;
-  --success-subtle:       #ecfdf5;
+  /* Semantic — kept chromatic on purpose; these are status signals, not brand */
+  --success:              #16a34a;
+  --success-subtle:       #f0fdf4;
   --warning:              #d97706;
   --warning-subtle:       #fffbeb;
-  --error:                #df1b41;
-  --error-subtle:         #fff1f2;
+  --error:                #dc2626;
+  --error-subtle:         #fef2f2;
 
-  /* Radius — Stripe is subtle */
+  /* Radius */
   --radius:               0.375rem;
 
-  /* Shadows — Stripe elevation system */
-  --shadow-xs:   0 1px 2px 0 rgb(10 37 64 / 0.04);
-  --shadow-sm:   0 1px 3px 0 rgb(10 37 64 / 0.06), 0 1px 2px -1px rgb(10 37 64 / 0.04);
-  --shadow-md:   0 4px 6px -1px rgb(10 37 64 / 0.06), 0 2px 4px -2px rgb(10 37 64 / 0.04);
-  --shadow-lg:   0 10px 15px -3px rgb(10 37 64 / 0.06), 0 4px 6px -4px rgb(10 37 64 / 0.04);
-  --shadow-xl:   0 20px 25px -5px rgb(10 37 64 / 0.08), 0 8px 10px -6px rgb(10 37 64 / 0.04);
+  /* Shadows — neutral, no colour cast */
+  --shadow-xs:   0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-sm:   0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow-md:   0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+  --shadow-lg:   0 10px 15px -3px rgb(0 0 0 / 0.06), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+  --shadow-xl:   0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.04);
 }
 
 @theme inline {
@@ -86,10 +87,10 @@
   --color-success-subtle:      var(--success-subtle);
 
   /* Typography */
-  --font-sans:    "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-display: "Instrument Serif", Georgia, serif;
-  --font-mono:    "JetBrains Mono", monospace;
-  --font-heading: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans:    "Geist", system-ui, sans-serif;
+  --font-display: "Geist", system-ui, sans-serif;
+  --font-mono:    "Geist Mono", ui-monospace, monospace;
+  --font-heading: "Geist", system-ui, sans-serif;
 
   /* Radius scale */
   --radius-xs:  2px;
@@ -132,13 +133,13 @@
   .text-balance   { text-wrap: balance; }
   .text-pretty    { text-wrap: pretty; }
 
-  /* Stripe gradient mesh — used in hero section */
+  /* Neutral gradient mesh — used in hero section */
   .bg-stripe-mesh {
     background-color: #ffffff;
     background-image:
-      radial-gradient(ellipse 100% 70% at 50% -5%, #f0f0ff 0%, transparent 65%),
-      radial-gradient(ellipse 50% 50% at 85% 55%,  #eef2ff 0%, transparent 55%),
-      radial-gradient(ellipse 30% 40% at 10% 70%,  #f5f3ff 0%, transparent 55%);
+      radial-gradient(ellipse 100% 70% at 50% -5%, #f2f2f2 0%, transparent 65%),
+      radial-gradient(ellipse 50% 50% at 85% 55%,  #f5f5f5 0%, transparent 55%),
+      radial-gradient(ellipse 30% 40% at 10% 70%,  #fafafa 0%, transparent 55%);
   }
 
   /* Noise texture overlay — very subtle, adds depth */

@@ -4,7 +4,6 @@ import { PartnerLogos } from "@/components/sections/partner-logos";
 import { Highlights } from "@/components/sections/highlights";
 import { FeaturesSection } from "@/components/sections/features";
 import { HowItWorks } from "@/components/sections/how-it-works";
-import { ServicesBundles } from "@/components/sections/services-bundles";
 import { TestimonialsSection } from "@/components/sections/testimonials";
 import { TransactionDashboard } from "@/components/sections/transaction-dashboard";
 import { FaqSection } from "@/components/sections/faq";
@@ -22,7 +21,6 @@ export default function HomePage() {
         <HowItWorks />
         <FeaturesSection />
         <TransactionDashboard />
-        <ServicesBundles />
         <TestimonialsSection />
         <FaqSection />
         <CtaStrip />
