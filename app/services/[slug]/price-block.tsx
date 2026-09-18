@@ -16,7 +16,6 @@ export function PriceBlock({ service }: { service: Service }) {
       </p>
       <p
         className="text-4xl font-bold text-foreground tabular-nums"
-        style={{ fontFamily: "var(--font-mono)" }}
       >
         {formatINR(activePrice)}
       </p>

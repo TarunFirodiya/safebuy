@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import {
   ShieldCheckIcon,
   BriefcaseIcon,
   CurrencyRupeeIcon,
+  ArrowRightIcon,
 } from "@heroicons/react/24/outline";
-import { CalendlyModal } from "@/components/calendly-modal";
 import { fadeInUp, staggerContainer, staggerItem, transitions, VIEWPORT } from "@/lib/motion";
 
 const trustChips = [
@@ -17,12 +17,8 @@ const trustChips = [
 ];
 
 export function HeroSection() {
-  const [calendlyOpen, setCalendlyOpen] = useState(false);
-
   return (
     <>
-      <CalendlyModal open={calendlyOpen} onOpenChange={setCalendlyOpen} />
-
       <section className="relative min-h-[92vh] flex items-center pt-16 overflow-hidden bg-stripe-mesh">
         {/* Subtle grid overlay */}
         <div
@@ -85,13 +81,13 @@ export function HeroSection() {
               animate="visible"
               transition={{ ...transitions.fadeInUp, delay: 0.28 }}
             >
-              <button
-                type="button"
-                onClick={() => setCalendlyOpen(true)}
-                className="inline-flex items-center justify-center h-11 px-6 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity shadow-sm"
+              <Link
+                href="/start"
+                className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity shadow-sm"
               >
-                Talk to an expert
-              </button>
+                Take the 2-minute quiz
+                <ArrowRightIcon className="w-4 h-4" />
+              </Link>
             </motion.div>
 
             {/* Trust chips */}

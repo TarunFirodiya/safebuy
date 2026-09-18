@@ -5,7 +5,6 @@ const product = [
   { label: "Features",         href: "/#features" },
   { label: "How it works",     href: "/#how-it-works" },
   { label: "Services catalog", href: "/services" },
-  { label: "Pricing",          href: "/#pricing" },
 ];
 
 const company = [

@@ -4,23 +4,19 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { LeadModal } from "@/components/lead-modal";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "Features",       href: "/#features" },
   { label: "How it works",   href: "/#how-it-works" },
   { label: "Services",       href: "/services" },
-  { label: "Pricing",        href: "/#pricing" },
 ];
 
 export function Nav() {
   const [menuOpen, setMenuOpen]   = useState(false);
-  const [leadOpen, setLeadOpen]   = useState(false);
 
   return (
     <>
-      <LeadModal open={leadOpen} onOpenChange={setLeadOpen} />
 
       <header className="fixed top-0 inset-x-0 z-40">
         <nav className="bg-white/80 backdrop-blur-xl border-b border-[var(--border)]">
@@ -57,12 +53,12 @@ export function Nav() {
 
               {/* Desktop CTAs */}
               <div className="hidden lg:flex items-center gap-3">
-                <button
-                  onClick={() => setLeadOpen(true)}
+                <Link
+                  href="/start"
                   className="inline-flex items-center justify-center h-9 px-4 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
                 >
-                  Talk to an expert
-                </button>
+                  Take the quiz
+                </Link>
               </div>
 
               {/* Mobile hamburger */}
@@ -96,15 +92,13 @@ export function Nav() {
                   ))}
                 </ul>
                 <div className="flex flex-col gap-2 pt-2 border-t border-[var(--border)]">
-                  <button
-                    onClick={() => {
-                      setMenuOpen(false);
-                      setLeadOpen(true);
-                    }}
-                    className="w-full py-2.5 text-sm font-semibold bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-opacity"
+                  <Link
+                    href="/start"
+                    onClick={() => setMenuOpen(false)}
+                    className="w-full py-2.5 text-center text-sm font-semibold bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-opacity"
                   >
-                    Talk to an expert
-                  </button>
+                    Take the quiz
+                  </Link>
                 </div>
               </div>
             )}

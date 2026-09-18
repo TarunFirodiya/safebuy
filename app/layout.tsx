@@ -1,29 +1,29 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import type { LegalService, Organization, WithContext } from "schema-dts";
 import "./globals.css";
 
-const sans = Plus_Jakarta_Sans({
+// Geist is a variable font, so no `weight` is passed — the full axis ships and
+// every weight the UI uses resolves from the one file.
+const sans = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
 });
 
-const display = Instrument_Serif({
+// Headings share the sans face in the monotone system; --font-display is kept
+// as its own variable so call sites styling headings need no changes.
+const display = Geist({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  weight: "400",
-  style: ["normal", "italic"],
 });
 
-const mono = JetBrains_Mono({
+const mono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {

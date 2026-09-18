@@ -53,14 +53,6 @@ export function ServicesClient() {
               combines the services most buyers need.
             </p>
 
-            <Link
-              href="/#pricing"
-              className="mt-6 inline-flex items-center gap-2 h-10 px-5 rounded-md border border-[var(--border)] bg-[var(--accent)] text-sm font-medium text-[var(--primary)] hover:bg-white transition-colors"
-            >
-              <RectangleGroupIcon className="w-4 h-4" />
-              Browse bundles — Shield / Assure / Seal / Plus
-              <ArrowRightIcon className="w-3.5 h-3.5" />
-            </Link>
           </motion.div>
 
           <div className="mt-8 flex flex-wrap gap-2">
